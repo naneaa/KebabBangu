@@ -4,7 +4,7 @@ package com.elaine.kebabbangu;
  * Created by Elaine on 5/28/2017.
  */
 
-public abstract class Product {
+public class Product {
     private String name;
     private double price;
 

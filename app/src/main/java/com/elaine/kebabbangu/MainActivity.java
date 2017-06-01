@@ -5,6 +5,8 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 
+import java.util.LinkedList;
+
 public class MainActivity extends AppCompatActivity {
 
     @Override
@@ -32,4 +34,5 @@ public class MainActivity extends AppCompatActivity {
         Intent intent = new Intent(MainActivity.this, NewOrderActivity.class);
         startActivity(intent);
     }
+
 }

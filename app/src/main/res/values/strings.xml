@@ -8,5 +8,7 @@
     <string name="button_edita_pedido">Editar Pedido</string>
     <string name="button_inicia_caixa">Iniciar Caixa</string>
     <string name="button_encerra_caixa">Encerrar Caixa</string>
+    <string name="numero_pedido">N. do Pedido</string>
+
 
 </resources>

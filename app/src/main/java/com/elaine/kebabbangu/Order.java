@@ -52,7 +52,15 @@ public class Order {
     }
 
     public void AddItem(Product product){
+        if(products.contains(product)) {
+            int index = products.indexOf(product);
+            quantity.set(index, quantity.get(index) + 1);
+        } else {
+            products.add(product);
+            quantity.add(1);
+        }
 
+        totalPrice += product.getPrice();
     }
 
     public String toString(){
@@ -62,5 +70,16 @@ public class Order {
         }
 
         return "Pedido " + id + "\n" + list + "Valor Total: " + totalPrice;
+    }
+
+    public String stringList() {
+        String list = "";
+        for (int i = 0; i < products.size(); i++){
+            list += "(" + quantity.get(i) + ") " + products.get(i).getName();
+            list += products.size() > 1 ? "\n" : "";
+        }
+
+        return list;
+
     }
 }

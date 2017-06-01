@@ -4,8 +4,15 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#CC6600"
+    android:background="@drawable/fundo"
     tools:context="com.elaine.kebabbangu.OrdersActivity">
+
+
+    <ListView
+        android:id="@+id/lista_pedidos"
+        android:layout_width="match_parent"
+        android:layout_height="392dp"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior"></ListView>
 
     <Button
         android:id="@+id/button_cancela_pedido"
@@ -21,20 +28,11 @@
         android:layout_width="match_parent"
         android:layout_height="60dp"
         android:text="@string/button_edita_pedido"
-        android:onClick="callPedido"
+        android:onClick="callEditOrder"
         android:background="#FFCC00"
         android:layout_marginTop="10dp"
         android:layout_below="@+id/button_cancela_pedido"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true" />
-
-    <TextView
-        android:id="@+id/textView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="162dp"
-        android:text="ADICIONAR LISTA DE PEDIDOS AQUI!" />
 
 </RelativeLayout>
