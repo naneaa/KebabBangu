@@ -1,0 +1,12 @@
+<resources>
+    <string name="app_name">KebabBangu</string>
+    <string name="button_estoque">Estoque</string>
+    <string name="button_pedido">Pedidos</string>
+    <string name="button_caixa">Caixa</string>
+    <string name="title_activity_pedido">Pedidos</string>
+    <string name="button_cancela_pedido">Cancelar Pedido</string>
+    <string name="button_edita_pedido">Editar Pedido</string>
+    <string name="button_inicia_caixa">Iniciar Caixa</string>
+    <string name="button_encerra_caixa">Encerrar Caixa</string>
+
+</resources>
