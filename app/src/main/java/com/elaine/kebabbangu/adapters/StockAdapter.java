@@ -1,4 +1,4 @@
-package com.elaine.kebabbangu;
+package com.elaine.kebabbangu.adapters;
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -7,7 +7,9 @@ import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.TextView;
 
-import java.util.LinkedList;
+import com.elaine.kebabbangu.base.Product;
+import com.elaine.kebabbangu.R;
+import com.elaine.kebabbangu.base.Stock;
 
 /**
  * Created by Elaine on 6/2/2017.

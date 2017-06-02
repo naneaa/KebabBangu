@@ -1,4 +1,4 @@
-package com.elaine.kebabbangu;
+package com.elaine.kebabbangu.base;
 
 import java.util.LinkedList;
 

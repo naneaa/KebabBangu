@@ -1,9 +1,14 @@
-package com.elaine.kebabbangu;
+package com.elaine.kebabbangu.activities;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ListView;
+
+import com.elaine.kebabbangu.base.Order;
+import com.elaine.kebabbangu.adapters.OrdersAdapter;
+import com.elaine.kebabbangu.base.Product;
+import com.elaine.kebabbangu.R;
 
 import java.util.LinkedList;
 
@@ -39,4 +44,5 @@ public class OrdersActivity extends AppCompatActivity {
     public void callEditOrder(View view) {
         buildOrdersList();
     }
+
 }

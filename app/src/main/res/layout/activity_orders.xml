@@ -5,34 +5,39 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/fundo"
-    tools:context="com.elaine.kebabbangu.OrdersActivity">
+    tools:context="com.elaine.kebabbangu.activities.OrdersActivity">
 
 
     <ListView
         android:id="@+id/lista_pedidos"
         android:layout_width="match_parent"
-        android:layout_height="392dp"
+        android:layout_height="499dp"
         app:layout_behavior="@string/appbar_scrolling_view_behavior"></ListView>
 
-    <Button
-        android:id="@+id/button_cancela_pedido"
+    <LinearLayout
+        android:orientation="horizontal"
         android:layout_width="match_parent"
-        android:layout_height="60dp"
-        android:text="@string/button_cancela_pedido"
-        android:onClick="callEstoque"
-        android:background="#FFCC00"
-        android:layout_marginTop="400dp" />
+        android:layout_height="wrap_content"
+        android:layout_marginTop="500dp">
 
     <Button
-        android:id="@+id/button_edita_pedido"
+        android:id="@+id/button_cancel_order"
         android:layout_width="match_parent"
         android:layout_height="60dp"
+        android:layout_weight="1"
+        android:text="@string/button_cancela_pedido"
+        android:layout_marginRight="2dp"
+        android:onClick="callCancerOrder"
+        android:background="#FFCC00"/>
+
+    <Button
+        android:id="@+id/button_edit_order"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:layout_weight="1"
+        android:layout_marginLeft="2dp"
         android:text="@string/button_edita_pedido"
         android:onClick="callEditOrder"
-        android:background="#FFCC00"
-        android:layout_marginTop="10dp"
-        android:layout_below="@+id/button_cancela_pedido"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true" />
-
+        android:background="#FFCC00"/>
+    </LinearLayout>
 </RelativeLayout>

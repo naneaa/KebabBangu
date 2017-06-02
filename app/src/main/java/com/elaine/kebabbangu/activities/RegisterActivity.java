@@ -1,7 +1,9 @@
-package com.elaine.kebabbangu;
+package com.elaine.kebabbangu.activities;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+
+import com.elaine.kebabbangu.R;
 
 public class RegisterActivity extends AppCompatActivity {
 

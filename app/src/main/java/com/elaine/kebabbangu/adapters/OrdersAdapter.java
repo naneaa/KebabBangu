@@ -1,4 +1,4 @@
-package com.elaine.kebabbangu;
+package com.elaine.kebabbangu.adapters;
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -6,6 +6,9 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.TextView;
+
+import com.elaine.kebabbangu.base.Order;
+import com.elaine.kebabbangu.R;
 
 import java.util.LinkedList;
 
