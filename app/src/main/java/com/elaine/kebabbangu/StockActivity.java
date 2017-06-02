@@ -8,6 +8,6 @@ public class StockActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_estoque);
+        setContentView(R.layout.activity_stock);
     }
 }

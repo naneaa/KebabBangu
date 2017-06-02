@@ -10,31 +10,31 @@ import android.widget.TextView;
 import java.util.LinkedList;
 
 /**
- * Created by elaine on 01/06/17.
+ * Created by Elaine on 6/2/2017.
  */
 
-public class OrdersAdapter extends BaseAdapter{
+public class StockAdapter extends BaseAdapter{
 
     private final Context context;
-    private LinkedList<Order> orders;
+    private Stock stock;
 
-    public OrdersAdapter(Context context, LinkedList<Order> orders) {
-        this.orders = orders;
+    public StockAdapter(Context context, Stock stock) {
+        this.stock = stock;
         this.context = context;
     }
 
     @Override
-    public int getCount() { return this.orders.size(); }
+    public int getCount() { return this.stock.getProducts().size(); }
 
     @Override
-    public Object getItem(int position) { return this.orders.get(position); }
+    public Object getItem(int position) { return this.stock.getProducts().get(position); }
 
     @Override
-    public long getItemId(int position) { return this.orders.get(position).getId(); }
+    public long getItemId(int position) { return 0;}//this.stock.getProducts().get(position).getId(); }
 
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
-        Order order = this.orders.get(position);
+        Product product = this.stock.getProducts().get(position);
         LayoutInflater inflater = LayoutInflater.from(context);
 
         View view = convertView;
@@ -42,19 +42,14 @@ public class OrdersAdapter extends BaseAdapter{
             view = inflater.inflate(R.layout.orders_list, parent, false);
         }
 
-        TextView orderNumber = (TextView) view.findViewById(R.id.order_number);
         TextView orderString = (TextView) view.findViewById(R.id.order_string);
         TextView orderValue = (TextView) view.findViewById(R.id.order_value);
 
-        orderNumber.setText(Integer.toString(order.getId()));
-        orderString.setText(order.stringList());
-        orderValue.setText("R$ " + String.format("%1$.2f", order.getTotalPrice()));
+        orderString.setText(product.getName());
+        orderValue.setText(stock.getQuantity().get(position));
 
         return view;
     }
-
-
-
 
 
 }
