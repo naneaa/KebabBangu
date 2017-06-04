@@ -7,12 +7,12 @@
     android:background="@drawable/fundo"
     tools:context="com.elaine.kebabbangu.activities.OrdersActivity">
 
-
     <ListView
         android:id="@+id/lista_pedidos"
         android:layout_width="match_parent"
         android:layout_height="499dp"
-        app:layout_behavior="@string/appbar_scrolling_view_behavior"></ListView>
+        app:layout_behavior="@string/appbar_scrolling_view_behavior">
+    </ListView>
 
     <LinearLayout
         android:orientation="horizontal"
@@ -21,23 +21,26 @@
         android:layout_marginTop="500dp">
 
     <Button
-        android:id="@+id/button_cancel_order"
+        android:id="@+id/cancelOrderButton"
         android:layout_width="match_parent"
         android:layout_height="60dp"
         android:layout_weight="1"
         android:text="@string/button_cancela_pedido"
-        android:layout_marginRight="2dp"
-        android:onClick="callCancerOrder"
-        android:background="#FFCC00"/>
+        android:layout_marginLeft="5dp"
+        android:layout_marginRight="10dp"
+        android:onClick="callCancelOrder"
+        android:background="@drawable/button"/>
 
     <Button
-        android:id="@+id/button_edit_order"
+        android:id="@+id/editOrderButton"
         android:layout_width="match_parent"
         android:layout_height="60dp"
         android:layout_weight="1"
-        android:layout_marginLeft="2dp"
+        android:layout_marginLeft="5dp"
+        android:layout_marginRight="10dp"
         android:text="@string/button_edita_pedido"
         android:onClick="callEditOrder"
-        android:background="#FFCC00"/>
+        android:background="@drawable/button"/>
     </LinearLayout>
+
 </RelativeLayout>

@@ -1,8 +1,8 @@
 <resources>
-    <string name="app_name">KebabBangu</string>
-    <string name="button_estoque">Estoque</string>
-    <string name="button_pedido">Pedidos</string>
-    <string name="button_caixa">Caixa</string>
+    <string name="appName">KebabBangu</string>
+    <string name="stockButton">Estoque</string>
+    <string name="ordersButton">Pedidos</string>
+    <string name="registerButton">Caixa</string>
     <string name="title_activity_pedido">Pedidos</string>
     <string name="button_cancela_pedido">Cancelar Pedido</string>
     <string name="button_edita_pedido">Editar Pedido</string>
@@ -12,5 +12,5 @@
     <string name="button_edit_stock">Editar Estoque</string>
     <string name="button_add_stock">Adicionar Produto ao Estoque</string>
 
-
+    <string name="settingsButton">Configurações</string>
 </resources>

@@ -51,13 +51,8 @@ public class OrdersAdapter extends BaseAdapter{
 
         orderNumber.setText(Integer.toString(order.getId()));
         orderString.setText(order.stringList());
-        orderValue.setText("R$ " + String.format("%1$.2f", order.getTotalPrice()));
+        orderValue.setText("R$ " + String.format("%1$.2f", order.getPrice()));
 
         return view;
     }
-
-
-
-
-
 }

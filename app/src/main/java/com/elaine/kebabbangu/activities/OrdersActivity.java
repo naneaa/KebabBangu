@@ -1,21 +1,23 @@
 package com.elaine.kebabbangu.activities;
 
+import android.content.Context;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ListView;
+import android.widget.Toast;
 
 import com.elaine.kebabbangu.base.Order;
 import com.elaine.kebabbangu.adapters.OrdersAdapter;
 import com.elaine.kebabbangu.base.Product;
 import com.elaine.kebabbangu.R;
+import com.elaine.kebabbangu.dao.OrderDAO;
 
 import java.util.LinkedList;
 
 public class OrdersActivity extends AppCompatActivity {
 
     private ListView list;
-    private LinkedList<Order> nhe = new LinkedList<>();
 
     @Override
     protected void onResume() {
@@ -32,17 +34,24 @@ public class OrdersActivity extends AppCompatActivity {
     }
 
     private void buildOrdersList(){
-        //StudentDAO studentDAO = new StudentDAO(StudentsListActivity.this);
-        //List<Student> studentList = studentDAO.read();
-        //studentDAO.close();
-        nhe.add(new Order(0));
-        nhe.getFirst().AddItem(new Product("NHE", 10.00));
-        OrdersAdapter orderListViewAdapter = new OrdersAdapter(this, nhe);
+        OrderDAO orderDAO = new OrderDAO(OrdersActivity.this);
+        LinkedList<Order> ordersList = orderDAO.read();
+        orderDAO.close();
+
+        OrdersAdapter orderListViewAdapter = new OrdersAdapter(this, ordersList);
         list.setAdapter(orderListViewAdapter);
     }
 
-    public void callEditOrder(View view) {
-        buildOrdersList();
+    public void callEditOrder(View view){
+        Toast toast = Toast.makeText(getApplicationContext(), "Pedido Editado!", Toast.LENGTH_SHORT);
+        toast.show();
+    }
+
+    public void callCancelOrder(View view){
+       // String ttt = list.getSelectedItem().toString();
+
+        Toast toast = Toast.makeText(getApplicationContext(), "Pedido Cancelado!", Toast.LENGTH_SHORT);
+        toast.show();
     }
 
 }

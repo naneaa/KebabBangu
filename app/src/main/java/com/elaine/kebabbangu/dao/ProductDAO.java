@@ -25,9 +25,9 @@ public class ProductDAO extends SQLiteOpenHelper{
     public void onCreate(SQLiteDatabase db) {
         String sqlCreateTableProducts =
                 "CREATE TABLE Products (" +
-                        "id INTEGER PRIMARY KEY,"+
-                        "name TEXT NOT NULL,"+
-                        "price DOUBLE NOT NULL)";
+                        "ProductID INTEGER PRIMARY KEY,"+
+                        "ProductName TEXT NOT NULL,"+
+                        "ProductPrice DOUBLE NOT NULL)";
 
         db.execSQL(sqlCreateTableProducts);
     }
@@ -36,58 +36,59 @@ public class ProductDAO extends SQLiteOpenHelper{
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {}
 
     public void create(Product product) {
-
-        SQLiteDatabase database = getWritableDatabase();
-
         ContentValues productValues = getContentValues(product);
 
-        database.insert("Students", null, productValues);
-    }
-
-    public LinkedList<Product> read() {
-        SQLiteDatabase database = getReadableDatabase();
-        String sqlReadStudents =
-                "SELECT * FROM Students";
-
-        Cursor cursorReadStudents = database.rawQuery(sqlReadStudents, null);
-
-        LinkedList<Product> products = new LinkedList<Product>();
-        while (cursorReadStudents.moveToNext()){
-
-            Product product = new Product();
-            product.setId(cursorReadStudents.getInt(
-                    cursorReadStudents.getColumnIndex("id")));
-            product.setName(cursorReadStudents.getString(
-                    cursorReadStudents.getColumnIndex("name")));
-            product.setPrice(cursorReadStudents.getDouble(
-                    cursorReadStudents.getColumnIndex("price")));
-
-            products.add(product);
-        }
-
-        cursorReadStudents.close();
-
-        return products;
+        SQLiteDatabase database = getWritableDatabase();
+        database.insert("Products", null, productValues);
     }
 
     public void delete(int id) {
-        SQLiteDatabase database = getWritableDatabase();
         String[] params = {Integer.toString(id)};
-        database.delete("Students", "id = ?", params);
+
+        SQLiteDatabase database = getWritableDatabase();
+        database.delete("Products", "ProductID = ?", params);
     }
 
     public void update(Product product) {
-        SQLiteDatabase database = getWritableDatabase();
-        ContentValues studentValues = getContentValues(product);
+        ContentValues productValues = getContentValues(product);
         String[] params = {Integer.toString(product.getId())};
-        database.update("Students", studentValues, "id = ?", params);
+
+        SQLiteDatabase database = getWritableDatabase();
+        database.update("Products", productValues, "ProductID = ?", params);
     }
 
     @NonNull
     private ContentValues getContentValues(Product product) {
         ContentValues studentValues = new ContentValues();
-        studentValues.put("name", product.getName());
-        studentValues.put("photopath", product.getPrice());
+        studentValues.put("ProductName", product.getName());
+        studentValues.put("ProductPrice", product.getPrice());
+
         return studentValues;
+    }
+
+    public LinkedList<Product> read() {
+        SQLiteDatabase database = getReadableDatabase();
+        String sqlReadProducts =
+                "SELECT * FROM Products";
+
+        Cursor cursorReadProducts = database.rawQuery(sqlReadProducts, null);
+
+        LinkedList<Product> products = new LinkedList<Product>();
+        while (cursorReadProducts.moveToNext()){
+
+            Product product = new Product();
+            product.setId(cursorReadProducts.getInt(
+                    cursorReadProducts.getColumnIndex("ProductID")));
+            product.setName(cursorReadProducts.getString(
+                    cursorReadProducts.getColumnIndex("ProductName")));
+            product.setPrice(cursorReadProducts.getDouble(
+                    cursorReadProducts.getColumnIndex("ProductPrice")));
+
+            products.add(product);
+        }
+
+        cursorReadProducts.close();
+
+        return products;
     }
 }

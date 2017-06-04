@@ -10,13 +10,24 @@ public class Order {
     private LinkedList<Product> products;
     private LinkedList<Integer> quantity;
     private int id;
-    private double totalPrice;
+    private int number;
+    private double price;
+    private boolean isPaid;
+    private String paymentMethod;
 
     public Order(int id){
         this.products = new LinkedList<>();
         this.quantity = new LinkedList<>();
         this.id = id;
-        this.totalPrice = 0.0;
+        this.price = 0.0;
+        this.setPaid(false);
+    }
+
+    public Order(){
+        this.products = new LinkedList<>();
+        this.quantity = new LinkedList<>();
+        this.price = 0.0;
+        this.setPaid(false);
     }
 
     public LinkedList<Product> getProducts() {
@@ -43,12 +54,36 @@ public class Order {
         this.id = id;
     }
 
-    public double getTotalPrice() {
-        return totalPrice;
+    public int getNumber() {
+        return number;
     }
 
-    public void setTotalPrice(double totalPrice) {
-        this.totalPrice = totalPrice;
+    public void setNumber(int number) {
+        this.number = number;
+    }
+
+    public boolean isPaid() {
+        return isPaid;
+    }
+
+    public void setPaid(boolean paid) {
+        isPaid = paid;
+    }
+
+    public String getPaymentMethod() {
+        return paymentMethod;
+    }
+
+    public void setPaymentMethod(String paymentMethod) {
+        this.paymentMethod = paymentMethod;
+    }
+
+    public double getPrice() {
+        return price;
+    }
+
+    public void setPrice(double totalPrice) {
+        this.price = totalPrice;
     }
 
     public void AddItem(Product product){
@@ -60,7 +95,7 @@ public class Order {
             quantity.add(1);
         }
 
-        totalPrice += product.getPrice();
+        price += product.getPrice();
     }
 
     public String toString(){
@@ -69,7 +104,7 @@ public class Order {
             list += quantity.get(i) + " - " + products.get(i).toString() + "\n";
         }
 
-        return "Pedido " + id + "\n" + list + "Valor Total: " + totalPrice;
+        return "Pedido " + id + "\n" + list + "Valor Total: " + price;
     }
 
     public String stringList() {
@@ -80,6 +115,5 @@ public class Order {
         }
 
         return list;
-
     }
 }

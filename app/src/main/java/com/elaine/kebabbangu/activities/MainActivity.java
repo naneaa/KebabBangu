@@ -15,22 +15,27 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
     }
 
-    public void callPedido(View view) {
+    public void callOrdersScreen(View view) {
         Intent intent = new Intent(MainActivity.this, OrdersActivity.class);
         startActivity(intent);
     }
 
-    public void callCaixa(View view) {
+    public void callRegisterScreen(View view) {
         Intent intent = new Intent(MainActivity.this, RegisterActivity.class);
         startActivity(intent);
     }
 
-    public void callEstoque(View view) {
+    public void callStockScreen(View view) {
         Intent intent = new Intent(MainActivity.this, StockActivity.class);
         startActivity(intent);
     }
 
-    public void callAddPedido(View view) {
+    public void callSettingsScreen(View view) {
+        Intent intent = new Intent(MainActivity.this, SettingsActivity.class);
+        startActivity(intent);
+    }
+
+    public void callNewOrderScreen(View view){
         Intent intent = new Intent(MainActivity.this, NewOrderActivity.class);
         startActivity(intent);
     }
