@@ -3,6 +3,7 @@ package com.elaine.kebabbangu.activities;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.Toast;
 
@@ -14,6 +15,7 @@ public class NewProductActivity extends AppCompatActivity {
 
     private EditText textName;
     private EditText textPrice;
+    private CheckBox hasSauce, hasSalad, hasCheese, onMenu;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -22,11 +24,15 @@ public class NewProductActivity extends AppCompatActivity {
 
         textName = (EditText) findViewById(R.id.textName);
         textPrice = (EditText) findViewById(R.id.textPrice);
+        hasSalad = (CheckBox) findViewById(R.id.checkHasSalad);
+        hasSauce = (CheckBox) findViewById(R.id.checkHasSauce);
+        hasCheese = (CheckBox) findViewById(R.id.checkHasCheese);
+        onMenu = (CheckBox) findViewById(R.id.checkOnMenu);
     }
 
     public void callCreateProduct(View view){
 
-        Product product = new Product();
+        Product product;
         try {
             ProductDAO productDAO = new ProductDAO(NewProductActivity.this);
             product = buildProductForInsert();
@@ -39,12 +45,12 @@ public class NewProductActivity extends AppCompatActivity {
 
             productDAO.close();
             Toast.makeText(NewProductActivity.this,
-                    "Novo aluno " + product.getName() + " salvo!",
+                    "Novo produto " + product.getName() + " salvo!",
                     Toast.LENGTH_SHORT).show();
             finish();
         } catch (Exception e) {
             Toast.makeText(NewProductActivity.this,
-                    "Erro ao salvar novo aluno. \n" + e.getMessage(),
+                    "Erro ao salvar novo produto. \n" + e.getMessage(),
                     Toast.LENGTH_SHORT).show();
         }
     }
@@ -64,6 +70,10 @@ public class NewProductActivity extends AppCompatActivity {
         String price = textPrice.getText().toString();
 
         Product product = new Product(name, Double.valueOf(price));
+        product.setHasSauce(hasSauce.isChecked());
+        product.setHasSalad(hasSalad.isChecked());
+        product.setHasCheese(hasCheese.isChecked());
+        product.setOnMenu(onMenu.isChecked());
 
         return product;
     }

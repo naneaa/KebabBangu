@@ -5,12 +5,13 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/fundo"
-    tools:context="com.elaine.kebabbangu.activities.NewOrderActivity">
+    tools:context="com.elaine.kebabbangu.activities.OrdersActivity">
 
     <ListView
-        android:id="@+id/new_order_list"
+        android:id="@+id/list_menu"
         android:layout_width="match_parent"
-        android:layout_height="200dp"
-        app:layout_behavior="@string/appbar_scrolling_view_behavior"></ListView>
+        android:layout_height="499dp"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior">
+    </ListView>
 
 </RelativeLayout>

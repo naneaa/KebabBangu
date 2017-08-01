@@ -20,7 +20,7 @@ public class NewOrderAdapter extends BaseAdapter{
     private Order order;
 
     public NewOrderAdapter(Context context, Order order) {
-        this.order = this.order;
+        this.order = order;
         this.context = context;
     }
 

@@ -48,8 +48,6 @@ public class OrdersActivity extends AppCompatActivity {
     }
 
     public void callCancelOrder(View view){
-       // String ttt = list.getSelectedItem().toString();
-
         Toast toast = Toast.makeText(getApplicationContext(), "Pedido Cancelado!", Toast.LENGTH_SHORT);
         toast.show();
     }

@@ -27,7 +27,11 @@ public class ProductDAO extends SQLiteOpenHelper{
                 "CREATE TABLE Products (" +
                         "ProductID INTEGER PRIMARY KEY,"+
                         "ProductName TEXT NOT NULL,"+
-                        "ProductPrice DOUBLE NOT NULL)";
+                        "ProductPrice DOUBLE NOT NULL," +
+                        "HasSauce TEXT NOT NULL," +
+                        "HasSalad TEXT NOT NULL," +
+                        "HasCheese TEXT NOT NULL," +
+                        "OnMenu TEXT NOT NULL)";
 
         db.execSQL(sqlCreateTableProducts);
     }
@@ -62,6 +66,10 @@ public class ProductDAO extends SQLiteOpenHelper{
         ContentValues studentValues = new ContentValues();
         studentValues.put("ProductName", product.getName());
         studentValues.put("ProductPrice", product.getPrice());
+        studentValues.put("HasSauce", product.hasSauce());
+        studentValues.put("HasSalad", product.hasSalad());
+        studentValues.put("HasCheese", product.hasCheese());
+        studentValues.put("OnMenu", product.isOnMenu());
 
         return studentValues;
     }
@@ -83,6 +91,14 @@ public class ProductDAO extends SQLiteOpenHelper{
                     cursorReadProducts.getColumnIndex("ProductName")));
             product.setPrice(cursorReadProducts.getDouble(
                     cursorReadProducts.getColumnIndex("ProductPrice")));
+            product.setHasSauce(Boolean.parseBoolean(cursorReadProducts.getString(
+                    cursorReadProducts.getColumnIndex("HasSauce"))));
+            product.setHasSalad(Boolean.parseBoolean(cursorReadProducts.getString(
+                    cursorReadProducts.getColumnIndex("HasSalad"))));
+            product.setHasCheese(Boolean.parseBoolean(cursorReadProducts.getString(
+                    cursorReadProducts.getColumnIndex("HasCheese"))));
+            product.setOnMenu(Boolean.parseBoolean(cursorReadProducts.getString(
+                    cursorReadProducts.getColumnIndex("OnMenu"))));
 
             products.add(product);
         }

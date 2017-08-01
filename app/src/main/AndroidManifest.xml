@@ -21,7 +21,8 @@
         <activity android:name=".activities.RegisterActivity" />
         <activity android:name=".activities.StockActivity" />
         <activity android:name=".activities.NewProductActivity" />
-        <activity android:name=".activities.SettingsActivity"></activity>
+        <activity android:name=".activities.SettingsActivity" />
+        <activity android:name=".activities.MenuActivity"></activity>
     </application>
 
 </manifest>
