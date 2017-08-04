@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/fundo"
-    tools:context="com.elaine.kebabbangu.activities.MenuActivity">
+    tools:context="com.elaine.kebabbangu.activities.AllProductsActivity">
 
     <ListView
         android:id="@+id/list_menu"

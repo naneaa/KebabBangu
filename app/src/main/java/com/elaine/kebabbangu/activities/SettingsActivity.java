@@ -20,9 +20,19 @@ public class SettingsActivity extends AppCompatActivity {
         startActivity(intent);
     }
 
-
     public void callMenuScreen(View view){
         Intent intent = new Intent(SettingsActivity.this, MenuActivity.class);
+        startActivity(intent);
+    }
+
+    public void callAllProductsScreen(View view){
+        Intent intent = new Intent(SettingsActivity.this, AllProductsActivity.class);
+        startActivity(intent);
+    }
+
+
+    public void callStockScreen(View view) {
+        Intent intent = new Intent(SettingsActivity.this, StockActivity.class);
         startActivity(intent);
     }
 }

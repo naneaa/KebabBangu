@@ -23,7 +23,6 @@ public class ProductAdapter extends BaseAdapter {
 
     public ProductAdapter(Context context, LinkedList<Product> products) {
         this.products = products;
-        System.out.println(products.size());
         this.context = context;
     }
 
@@ -49,10 +48,16 @@ public class ProductAdapter extends BaseAdapter {
         TextView productNumber = (TextView) view.findViewById(R.id.product_quantity);
         TextView productString = (TextView) view.findViewById(R.id.product_name);
         TextView productPrice = (TextView) view.findViewById(R.id.product_value);
+        TextView productSauce = (TextView) view.findViewById(R.id.product_sauce);
+        TextView productSalad = (TextView) view.findViewById(R.id.product_salad);
+        TextView productCheese = (TextView) view.findViewById(R.id.product_cheese);
 
         productNumber.setText(Integer.toString(product.getId()));
         productString.setText(product.getName());
         productPrice.setText("R$ " + String.format("%1$.2f", product.getPrice()));
+        productSauce.setText(product.hasSauce() ? "Sim" : "Não");
+        productSalad.setText(product.hasSalad() ? "Sim" : "Não");
+        productCheese.setText(product.hasCheese() ? "Sim" : "Não");
 
         return view;
     }

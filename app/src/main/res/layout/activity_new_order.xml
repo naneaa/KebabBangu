@@ -1,16 +1,308 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/fundo"
-    tools:context="com.elaine.kebabbangu.activities.NewOrderActivity">
+    tools:context="com.elaine.kebabbangu.activities.NewOrderActivity" >
 
-    <ListView
-        android:id="@+id/new_order_list"
+
+    <LinearLayout
+        android:orientation="horizontal"
         android:layout_width="match_parent"
-        android:layout_height="200dp"
-        app:layout_behavior="@string/appbar_scrolling_view_behavior"></ListView>
+        android:layout_height="wrap_content"
+        android:layout_marginTop="25dp">
+        <Spinner
+            android:id="@+id/spinner_menu"
+            android:layout_width="fill_parent"
+            android:layout_height="40dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:background="#FF0000"
+            android:popupBackground="#FF6A6B"
+            android:textAlignment="center"
+            android:layout_weight="4"/>
+
+        <Button
+            android:id="@+id/registerButton"
+            android:layout_width="wrap_content"
+            android:layout_height="40dp"
+            android:layout_weight="1"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:text="+"
+            android:onClick="callAddProductToOrder"
+            android:textColor="#FFFFFF"
+            android:background="#FF0000"/>
+    </LinearLayout>
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="90dp"
+        android:background="#FFCC00">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Opções de Salada:"
+            android:layout_marginTop="5dp"
+            android:layout_marginBottom="5dp"
+            android:textSize="20sp"
+            android:textColor="#000000"
+            android:textAlignment="center"/>
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <CheckBox
+                android:id="@+id/checkLettuce"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:layout_marginRight="10dp"
+                android:layout_marginLeft="20dp"
+                android:text="Alface"/>
+
+            <CheckBox
+                android:id="@+id/checkTomato"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="20dp"
+                android:text="Tomate"/>
+
+            <CheckBox
+                android:id="@+id/checkOnion"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:layout_marginRight="10dp"
+                android:layout_marginLeft="20dp"
+                android:text="Cebola"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <CheckBox
+                android:id="@+id/checkPicles"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:layout_marginRight="10dp"
+                android:layout_marginLeft="20dp"
+                android:text="Picles"/>
+
+            <CheckBox
+                android:id="@+id/checkOlives"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="20dp"
+                android:text="Azeitona"/>
+
+            <CheckBox
+                android:id="@+id/checkRaisins"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:layout_marginRight="10dp"
+                android:layout_marginLeft="20dp"
+                android:text="Passas"/>
+        </LinearLayout>
+
+        <CheckBox
+            android:id="@+id/checkCabbage"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="130dp"
+            android:text="Repolho"/>
+    </LinearLayout>
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="240dp"
+        android:background="#FFCC00">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Opções de Molho:"
+            android:layout_marginTop="5dp"
+            android:layout_marginBottom="5dp"
+            android:textSize="20sp"
+            android:textColor="#000000"
+            android:textAlignment="center"/>
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <CheckBox
+                android:id="@+id/checkHotSauce"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:layout_marginRight="10dp"
+                android:layout_marginLeft="10dp"
+                android:text="Picante"/>
+
+            <CheckBox
+                android:id="@+id/checkMangoSauce"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:text="Manga"/>
+
+            <CheckBox
+                android:id="@+id/checkTahineSauce"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:layout_marginRight="10dp"
+                android:layout_marginLeft="10dp"
+                android:text="Tahine"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <CheckBox
+                android:id="@+id/checkHoneySauce"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:layout_marginRight="10dp"
+                android:layout_marginLeft="10dp"
+                android:text="Honey"/>
+
+            <CheckBox
+                android:id="@+id/checkBarbecueSauce"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:text="Barbecue"/>
+
+            <CheckBox
+                android:id="@+id/checkChimichurriSauce"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:layout_marginLeft="10dp"
+                android:text="Chimichurri"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <CheckBox
+                android:id="@+id/checkGarlicSauce"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:layout_marginRight="10dp"
+                android:layout_marginLeft="40dp"
+                android:text="Pasta de Alho"/>
+
+            <CheckBox
+                android:id="@+id/checkHoneyMustardSauce"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:layout_marginLeft="5dp"
+                android:layout_marginRight="10dp"
+                android:text="Mostarda com Mel"/>
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="390dp"
+        android:background="#FFCC00">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Opções de Queijo:"
+            android:layout_marginTop="5dp"
+            android:layout_marginBottom="5dp"
+            android:textSize="20sp"
+            android:textColor="#000000"
+            android:textAlignment="center"/>
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <CheckBox
+                android:id="@+id/checkCheddar"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:layout_marginRight="10dp"
+                android:layout_marginLeft="20dp"
+                android:text="Cheddar"/>
+
+            <CheckBox
+                android:id="@+id/checkCatupiry"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="20dp"
+                android:text="Catupiry"/>
+        </LinearLayout>
+    </LinearLayout>
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="480dp">
+
+        <Button
+            android:id="@+id/buttonCleanOp"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:layout_weight="1"
+            android:text="Limpar Opções"
+            android:layout_marginRight="10dp"
+            android:layout_marginLeft="20dp"
+            android:onClick="callClearOptions"
+            android:textColor="#FFFFFF"
+            android:background="#FF0000"/>
+
+        <Button
+            android:id="@+id/buttonNext"
+            style="@style/Widget.AppCompat.Button"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="20dp"
+            android:layout_weight="1"
+            android:background="#FF0000"
+            android:onClick="callConfirmOrderScreen"
+            android:text="Próximo"
+            android:textColor="#FFFFFF" />
+    </LinearLayout>
 
 </RelativeLayout>

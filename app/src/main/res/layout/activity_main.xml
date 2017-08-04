@@ -8,16 +8,17 @@
     android:background="@drawable/fundo"
     tools:context="com.elaine.kebabbangu.activities.MainActivity" >
 
-    <ImageView
-        android:id="@+id/imageView"
+    <Button
+        android:id="@+id/newOrderButton"
         android:layout_width="185dp"
         android:layout_height="210dp"
         android:adjustViewBounds="true"
         android:scaleType="fitXY"
+        android:onClick="callNewOrderScreen"
         android:layout_marginTop="50dp"
-        app:srcCompat="@drawable/logo2"
+        android:background="@drawable/logo2"
         android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true" />
+        android:layout_centerHorizontal="true"/>
 
     <LinearLayout
         android:orientation="horizontal"
@@ -34,7 +35,8 @@
             android:layout_marginRight="10dp"
             android:layout_marginLeft="20dp"
             android:onClick="callOrdersScreen"
-            android:background="@drawable/button"/>
+            android:textColor="#FFFFFF"
+            android:background="#FF0000"/>
 
         <Button
             android:id="@+id/registerButton"
@@ -45,25 +47,9 @@
             android:layout_marginRight="20dp"
             android:text="@string/registerButton"
             android:onClick="callRegisterScreen"
-            android:background="@drawable/button"/>
+            android:textColor="#FFFFFF"
+            android:background="#FF0000"/>
     </LinearLayout>
-
-    <android.support.design.widget.FloatingActionButton
-        android:id="@+id/floatingActionButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="19dp"
-        android:clickable="true"
-        android:onClick="callNewOrderScreen"
-        android:tint="#000000"
-        app:backgroundTint="@android:color/holo_orange_dark"
-        app:srcCompat="@android:drawable/ic_input_add"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentEnd="true"
-        android:layout_marginRight="20dp"
-        android:layout_marginEnd="20dp" />
-
 
     <LinearLayout
         android:orientation="horizontal"
@@ -76,22 +62,24 @@
             android:layout_width="match_parent"
             android:layout_height="60dp"
             android:layout_weight="1"
-            android:text="@string/stockButton"
+            android:text="xxx"
             android:layout_marginRight="10dp"
             android:layout_marginLeft="20dp"
-            android:onClick="callStockScreen"
-            android:background="@drawable/button"/>
+            android:textColor="#FFFFFF"
+            android:background="#FF0000"/>
 
         <Button
             android:id="@+id/settingsButton"
+            style="@style/Widget.AppCompat.Button"
             android:layout_width="match_parent"
             android:layout_height="60dp"
-            android:layout_weight="1"
             android:layout_marginLeft="10dp"
             android:layout_marginRight="20dp"
-            android:text="@string/settingsButton"
+            android:layout_weight="1"
+            android:background="#FF0000"
             android:onClick="callSettingsScreen"
-            android:background="@drawable/button"/>
+            android:text="@string/settingsButton"
+            android:textColor="#FFFFFF" />
     </LinearLayout>
 
 </RelativeLayout>

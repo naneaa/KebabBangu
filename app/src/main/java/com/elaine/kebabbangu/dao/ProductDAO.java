@@ -91,16 +91,50 @@ public class ProductDAO extends SQLiteOpenHelper{
                     cursorReadProducts.getColumnIndex("ProductName")));
             product.setPrice(cursorReadProducts.getDouble(
                     cursorReadProducts.getColumnIndex("ProductPrice")));
-            product.setHasSauce(Boolean.parseBoolean(cursorReadProducts.getString(
-                    cursorReadProducts.getColumnIndex("HasSauce"))));
-            product.setHasSalad(Boolean.parseBoolean(cursorReadProducts.getString(
-                    cursorReadProducts.getColumnIndex("HasSalad"))));
-            product.setHasCheese(Boolean.parseBoolean(cursorReadProducts.getString(
-                    cursorReadProducts.getColumnIndex("HasCheese"))));
-            product.setOnMenu(Boolean.parseBoolean(cursorReadProducts.getString(
-                    cursorReadProducts.getColumnIndex("OnMenu"))));
-
+            product.setHasSauce(cursorReadProducts.getString(
+                    cursorReadProducts.getColumnIndex("HasSauce")).equals("1"));
+            product.setHasSalad(cursorReadProducts.getString(
+                    cursorReadProducts.getColumnIndex("HasSalad")).equals("1"));
+            product.setHasCheese(cursorReadProducts.getString(
+                    cursorReadProducts.getColumnIndex("HasCheese")).equals("1"));
+            product.setOnMenu(cursorReadProducts.getString(
+                    cursorReadProducts.getColumnIndex("OnMenu")).equals("1"));
             products.add(product);
+        }
+
+        cursorReadProducts.close();
+
+        return products;
+    }
+
+    public LinkedList<Product> readMenu() {
+        SQLiteDatabase database = getReadableDatabase();
+        String sqlReadProducts =
+                "SELECT * FROM Products";
+
+        Cursor cursorReadProducts = database.rawQuery(sqlReadProducts, null);
+
+        LinkedList<Product> products = new LinkedList<Product>();
+        while (cursorReadProducts.moveToNext()){
+            Product product = new Product();
+
+            product.setId(cursorReadProducts.getInt(
+                    cursorReadProducts.getColumnIndex("ProductID")));
+            product.setName(cursorReadProducts.getString(
+                    cursorReadProducts.getColumnIndex("ProductName")));
+            product.setPrice(cursorReadProducts.getDouble(
+                    cursorReadProducts.getColumnIndex("ProductPrice")));
+            product.setHasSauce(cursorReadProducts.getString(
+                    cursorReadProducts.getColumnIndex("HasSauce")).equals("1"));
+            product.setHasSalad(cursorReadProducts.getString(
+                    cursorReadProducts.getColumnIndex("HasSalad")).equals("1"));
+            product.setHasCheese(cursorReadProducts.getString(
+                    cursorReadProducts.getColumnIndex("HasCheese")).equals("1"));
+            product.setOnMenu(cursorReadProducts.getString(
+                    cursorReadProducts.getColumnIndex("OnMenu")).equals("1"));
+
+            if(product.isOnMenu())
+                products.add(product);
         }
 
         cursorReadProducts.close();

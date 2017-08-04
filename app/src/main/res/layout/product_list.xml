@@ -13,7 +13,7 @@
         android:layout_weight="1"
         android:textAlignment="center"
         android:gravity="center"
-        android:text="000" />
+        android:text="00" />
 
     <TextView
         android:id="@+id/product_name"
@@ -31,6 +31,33 @@
         android:layout_weight="1"
         android:textAlignment="center"
         android:gravity="center"
-        android:text="R$ 18.00" />
+        android:text="R$ 00.00" />
+
+    <TextView
+        android:id="@+id/product_sauce"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:textAlignment="center"
+        android:gravity="center"
+        android:text="Sim" />
+
+    <TextView
+        android:id="@+id/product_salad"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:textAlignment="center"
+        android:gravity="center"
+        android:text="Sim" />
+
+    <TextView
+        android:id="@+id/product_cheese"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:textAlignment="center"
+        android:gravity="center"
+        android:text="Sim" />
 
 </LinearLayout>

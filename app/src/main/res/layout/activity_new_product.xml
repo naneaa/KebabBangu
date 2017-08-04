@@ -14,7 +14,7 @@
         android:layout_width="match_parent"
         android:layout_height="60dp"
         android:textSize="20sp"
-        android:inputType="textPersonName"
+        android:inputType="textCapWords"
         android:paddingLeft="10dp"
         android:hint="Nome"
         android:layout_marginTop="40dp"
@@ -69,7 +69,8 @@
         android:layout_height="56dp"
         android:layout_gravity="center"
         android:layout_marginTop="20dp"
-        android:background="#FFCC00"
+        android:background="#FF0000"
+        android:textColor="#FFFFFF"
         android:onClick="callCreateProduct"
         android:text="Adicionar"
         android:textSize="19sp" />

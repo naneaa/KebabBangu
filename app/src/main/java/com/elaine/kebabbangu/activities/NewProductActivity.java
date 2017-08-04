@@ -1,5 +1,6 @@
 package com.elaine.kebabbangu.activities;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -16,6 +17,7 @@ public class NewProductActivity extends AppCompatActivity {
     private EditText textName;
     private EditText textPrice;
     private CheckBox hasSauce, hasSalad, hasCheese, onMenu;
+    private Product product;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -28,10 +30,22 @@ public class NewProductActivity extends AppCompatActivity {
         hasSauce = (CheckBox) findViewById(R.id.checkHasSauce);
         hasCheese = (CheckBox) findViewById(R.id.checkHasCheese);
         onMenu = (CheckBox) findViewById(R.id.checkOnMenu);
+
+        Intent intent = getIntent();
+        product = (Product) intent.getSerializableExtra("product");
+        if (product != null) {
+            textName.setText(product.getName());
+            textPrice.setText(Double.toString(product.getPrice()));
+            hasSalad.setChecked(product.hasSalad());
+            hasSauce.setChecked(product.hasSauce());
+            hasCheese.setChecked(product.hasCheese());
+            onMenu.setChecked(product.isOnMenu());
+        } else {
+            product = new Product();
+        }
     }
 
     public void callCreateProduct(View view){
-
         Product product;
         try {
             ProductDAO productDAO = new ProductDAO(NewProductActivity.this);
@@ -45,7 +59,7 @@ public class NewProductActivity extends AppCompatActivity {
 
             productDAO.close();
             Toast.makeText(NewProductActivity.this,
-                    "Novo produto " + product.getName() + " salvo!",
+                    "Produto " + product.getName() + " salvo!",
                     Toast.LENGTH_SHORT).show();
             finish();
         } catch (Exception e) {
@@ -69,7 +83,8 @@ public class NewProductActivity extends AppCompatActivity {
 
         String price = textPrice.getText().toString();
 
-        Product product = new Product(name, Double.valueOf(price));
+        product.setName(name);
+        product.setPrice(Double.valueOf(price));
         product.setHasSauce(hasSauce.isChecked());
         product.setHasSalad(hasSalad.isChecked());
         product.setHasCheese(hasCheese.isChecked());

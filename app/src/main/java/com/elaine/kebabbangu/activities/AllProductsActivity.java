@@ -17,7 +17,7 @@ import com.elaine.kebabbangu.dao.ProductDAO;
 
 import java.util.LinkedList;
 
-public class MenuActivity extends AppCompatActivity {
+public class AllProductsActivity extends AppCompatActivity {
 
     private ListView list;
 
@@ -30,7 +30,7 @@ public class MenuActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_menu);
+        setContentView(R.layout.activity_all_products);
 
         list = (ListView) findViewById(R.id.list_menu);
         registerForContextMenu(list);
@@ -47,14 +47,15 @@ public class MenuActivity extends AppCompatActivity {
         buildDelete((AdapterView.AdapterContextMenuInfo) menuInfo, deleteMenuItem);
     }
 
-    private void buildMenuList(){
-        ProductDAO productDAO = new ProductDAO(MenuActivity.this);
-        LinkedList<Product> productsList = productDAO.readMenu();
+    private void buildMenuList() {
+        ProductDAO productDAO = new ProductDAO(AllProductsActivity.this);
+        LinkedList<Product> productsList = productDAO.read();
         productDAO.close();
 
-        ProductAdapter menuListViewAdapter = new ProductAdapter(this, productsList);
-        list.setAdapter(menuListViewAdapter);
+        ProductAdapter orderListViewAdapter = new ProductAdapter(this, productsList);
+        list.setAdapter(orderListViewAdapter);
     }
+
 
     private void buildDelete(final AdapterView.AdapterContextMenuInfo menuInfo, MenuItem deleteMenuItem) {
         deleteMenuItem.setOnMenuItemClickListener(new MenuItem.OnMenuItemClickListener() {
@@ -63,13 +64,13 @@ public class MenuActivity extends AppCompatActivity {
                 AdapterView.AdapterContextMenuInfo adapterMenuInfo = menuInfo;
                 Product product = (Product) list.getItemAtPosition(adapterMenuInfo.position);
 
-                ProductDAO productDAO = new ProductDAO(MenuActivity.this);
+                ProductDAO productDAO = new ProductDAO(AllProductsActivity.this);
                 productDAO.delete(product.getId());
                 productDAO.close();
 
                 buildMenuList();
 
-                Toast.makeText(MenuActivity.this, "Produto " + product.getName() + " removido!",
+                Toast.makeText(AllProductsActivity.this, "Produto " + product.getName() + " removido!",
                         Toast.LENGTH_SHORT).show();
 
                 return false;
@@ -84,7 +85,7 @@ public class MenuActivity extends AppCompatActivity {
                 AdapterView.AdapterContextMenuInfo adapterMenuInfo = menuInfo;
                 Product product = (Product) list.getItemAtPosition(adapterMenuInfo.position);
 
-                Intent intentNewProduct = new Intent(MenuActivity.this, NewProductActivity.class);
+                Intent intentNewProduct = new Intent(AllProductsActivity.this, NewProductActivity.class);
                 intentNewProduct.putExtra("product", product);
                 startActivity(intentNewProduct);
 

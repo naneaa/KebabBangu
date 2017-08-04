@@ -22,7 +22,9 @@
         <activity android:name=".activities.StockActivity" />
         <activity android:name=".activities.NewProductActivity" />
         <activity android:name=".activities.SettingsActivity" />
-        <activity android:name=".activities.MenuActivity"></activity>
+        <activity android:name=".activities.MenuActivity" />
+        <activity android:name=".activities.AllProductsActivity" />
+        <activity android:name=".activities.ConfirmOrderActivity"></activity>
     </application>
 
 </manifest>

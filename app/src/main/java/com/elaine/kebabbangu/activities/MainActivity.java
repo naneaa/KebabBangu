@@ -25,10 +25,6 @@ public class MainActivity extends AppCompatActivity {
         startActivity(intent);
     }
 
-    public void callStockScreen(View view) {
-        Intent intent = new Intent(MainActivity.this, StockActivity.class);
-        startActivity(intent);
-    }
 
     public void callSettingsScreen(View view) {
         Intent intent = new Intent(MainActivity.this, SettingsActivity.class);
