@@ -1,23 +1,28 @@
 package com.elaine.kebabbangu.base;
 
+import java.io.Serializable;
 import java.util.LinkedList;
 
 /**
  * Created by Elaine on 5/28/2017.
  */
 
-public class Order {
+public class Order implements Serializable {
     private LinkedList<Product> products;
     private LinkedList<Integer> quantity;
+    private LinkedList<String> descriptions;
     private int id;
     private int number;
     private double price;
     private boolean isPaid;
     private String paymentMethod;
+    private String clientName;
+    private String date;
 
     public Order(int id){
         this.products = new LinkedList<>();
         this.quantity = new LinkedList<>();
+        this.descriptions = new LinkedList<>();
         this.id = id;
         this.price = 0.0;
         this.setPaid(false);
@@ -26,6 +31,7 @@ public class Order {
     public Order(){
         this.products = new LinkedList<>();
         this.quantity = new LinkedList<>();
+        this.descriptions = new LinkedList<>();
         this.price = 0.0;
         this.setPaid(false);
     }
@@ -66,6 +72,14 @@ public class Order {
         return isPaid;
     }
 
+    public LinkedList<String> getDescriptions() {
+        return descriptions;
+    }
+
+    public void setDescriptions(LinkedList<String> descriptions) {
+        this.descriptions = descriptions;
+    }
+
     public void setPaid(boolean paid) {
         isPaid = paid;
     }
@@ -86,13 +100,23 @@ public class Order {
         this.price = totalPrice;
     }
 
-    public void AddItem(Product product){
-        if(products.contains(product)) {
+    public String getDate() {
+        return date;
+    }
+
+    public void setDate(String date) {
+        this.date = date;
+    }
+
+    public void AddItem(Product product, String description){
+        if(products.contains(product) && descriptions.get(products.indexOf(product)).equals(description)) {
             int index = products.indexOf(product);
             quantity.set(index, quantity.get(index) + 1);
+            descriptions.add(description);
         } else {
             products.add(product);
             quantity.add(1);
+            descriptions.add(description);
         }
 
         price += product.getPrice();
@@ -116,4 +140,13 @@ public class Order {
 
         return list;
     }
+
+    public String getClientName() {
+        return clientName;
+    }
+
+    public void setClientName(String clientName) {
+        this.clientName = clientName;
+    }
+
 }

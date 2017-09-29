@@ -10,16 +10,17 @@
     <ListView
         android:id="@+id/list_stock"
         android:layout_width="match_parent"
-        android:layout_height="490dp"
+        android:layout_height="900dp"
         app:layout_behavior="@string/appbar_scrolling_view_behavior"></ListView>
 
     <Button
         android:id="@+id/button_add_stock"
         android:layout_width="match_parent"
-        android:layout_height="56dp"
+        android:layout_height="100dp"
         android:text="@string/button_add_stock"
         android:onClick="callEditOrder"
         android:textColor="#FFFFFF"
+        android:textSize="20sp"
         android:background="#FF0000"
         android:layout_marginTop="10dp"
         android:layout_below="@+id/list_stock"

@@ -8,34 +8,78 @@
     tools:context="com.elaine.kebabbangu.activities.RegisterActivity">
 
     <TextView
-        android:id="@+id/textView"
-        android:layout_width="wrap_content"
+        android:id="@+id/totalText"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="100dp"
-        android:textColor="#FFFFFF"
-        android:text="Em caixa: R$ 100.00"
-        android:textSize="32sp" />
+        android:layout_marginTop="150dp"
+        android:gravity="center"
+        android:textColor="#000000"
+        android:background="@color/myYellow"
+        android:text="Em caixa: R$ 00.00"
+        android:textSize="80sp" />
+
+    <TextView
+        android:id="@+id/cashText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="260dp"
+        android:gravity="center"
+        android:textColor="#000000"
+        android:background="@color/myYellow"
+        android:text="Dinheiro: R$ 00.00"
+        android:textSize="40sp" />
+
+    <TextView
+        android:id="@+id/debitText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="310dp"
+        android:gravity="center"
+        android:textColor="#000000"
+        android:background="@color/myYellow"
+        android:text="Débito: R$ 00.00"
+        android:textSize="40sp" />
+
+    <TextView
+        android:id="@+id/creditText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="360dp"
+        android:gravity="center"
+        android:textColor="#000000"
+        android:background="@color/myYellow"
+        android:text="Crédito: R$ 00.00"
+        android:textSize="40sp" />
 
     <Button
-        android:id="@+id/button_inicia_caixa"
+        android:id="@+id/startRegisterButton"
         android:layout_width="match_parent"
-        android:layout_height="60dp"
+        android:layout_height="100dp"
         android:text="@string/button_inicia_caixa"
         android:background="#FF0000"
         android:textColor="#FFFFFF"
-        android:layout_marginTop="250dp" />
+        android:textSize="20sp"
+        android:onClick="startRegister"
+        android:layout_marginTop="800dp" />
 
     <Button
-        android:id="@+id/button_encerra_caixa"
+        android:id="@+id/closeRegisterButton"
         android:layout_width="match_parent"
-        android:layout_height="60dp"
+        android:layout_height="100dp"
         android:text="@string/button_encerra_caixa"
         android:background="#FF0000"
         android:textColor="#FFFFFF"
-        android:layout_marginTop="10dp"
-        android:layout_below="@+id/button_inicia_caixa"
+        android:textSize="20sp"
+        android:layout_marginTop="20dp"
+        android:layout_below="@+id/startRegisterButton"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true" />
 

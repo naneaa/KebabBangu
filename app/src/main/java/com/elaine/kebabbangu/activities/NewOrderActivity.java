@@ -13,6 +13,9 @@ import com.elaine.kebabbangu.R;
 import com.elaine.kebabbangu.base.Product;
 import com.elaine.kebabbangu.dao.ProductDAO;
 
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.LinkedList;
 
 public class NewOrderActivity extends AppCompatActivity {
@@ -76,7 +79,57 @@ public class NewOrderActivity extends AppCompatActivity {
     }
 
     public void callAddProductToOrder(View view){
-        order.setId(001);
+        ProductDAO productDAO = new ProductDAO(NewOrderActivity.this);
+        LinkedList<Product> productsList = productDAO.readMenu();
+        productDAO.close();
+
+        Product selectedProduct = productsList.get((int)spinner.getSelectedItemId());
+        String productDescription = "";
+
+        if(selectedProduct.hasSalad()){
+            if(checkLettuce.isChecked())
+                productDescription += "Alface, ";
+            if(checkTomato.isChecked())
+                productDescription += "Tomate, ";
+            if(checkOnion.isChecked())
+                productDescription += "Cebola, ";
+            if(checkPicles.isChecked())
+                productDescription += "Picles, ";
+            if(checkOlives.isChecked())
+                productDescription += "Azeitona, ";
+            if(checkRaisins.isChecked())
+                productDescription += "Passas, ";
+            if(checkCabbage.isChecked())
+                productDescription += "Repolho, ";
+        }
+
+        if(selectedProduct.hasSauce()){
+            if(checkHotSauce.isChecked())
+                productDescription += "Picante, ";
+            if(checkMangoSauce.isChecked())
+                productDescription += "Manga, ";
+            if(checkTahineSauce.isChecked())
+                productDescription += "Tahine, ";
+            if(checkHoneySauce.isChecked())
+                productDescription += "Mel, ";
+            if(checkBarbecueSauce.isChecked())
+                productDescription += "Barbecue, ";
+            if(checkChimichurriSauce.isChecked())
+                productDescription += "ChimiChurri, ";
+            if(checkGarlicSauce.isChecked())
+                productDescription += "Pasta de Alho, ";
+            if(checkHoneyMustardSauce.isChecked())
+                productDescription += "Mostarda com Mel, ";
+        }
+
+        if(selectedProduct.hasCheese()){
+            if(checkCheddar.isChecked())
+                productDescription += "Cheddar, ";
+            if(checkCatupiry.isChecked())
+                productDescription += "Catupiry, ";
+        }
+
+        order.AddItem(selectedProduct, productDescription);
 
     }
 
@@ -103,7 +156,10 @@ public class NewOrderActivity extends AppCompatActivity {
     }
 
     public void callConfirmOrderScreen(View view){
+        Order order = new Order();
+
         Intent intent = new Intent(NewOrderActivity.this, ConfirmOrderActivity.class);
+        intent.putExtra("order", order);
         startActivity(intent);
     }
 
