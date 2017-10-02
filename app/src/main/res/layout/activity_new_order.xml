@@ -13,11 +13,11 @@
         android:orientation="horizontal"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="20dp">
+        android:layout_marginTop="25dp">
         <Spinner
             android:id="@+id/spinner_menu"
-            android:layout_width="700dp"
-            android:layout_height="100dp"
+            android:layout_width="fill_parent"
+            android:layout_height="40dp"
             android:layout_marginLeft="10dp"
             android:layout_marginRight="10dp"
             android:background="#FF0000"
@@ -27,13 +27,12 @@
 
         <Button
             android:id="@+id/registerButton"
-            android:layout_width="100dp"
-            android:layout_height="100dp"
-            android:layout_marginRight="10dp"
+            android:layout_width="wrap_content"
+            android:layout_height="40dp"
             android:layout_weight="1"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
             android:text="+"
-            android:textSize="30sp"
-            android:textAlignment="center"
             android:onClick="callAddProductToOrder"
             android:textColor="#FFFFFF"
             android:background="#FF0000"/>
@@ -43,7 +42,7 @@
         android:orientation="vertical"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="140dp"
+        android:layout_marginTop="90dp"
         android:background="#FFCC00">
 
         <TextView
@@ -52,7 +51,7 @@
             android:text="Opções de Salada:"
             android:layout_marginTop="5dp"
             android:layout_marginBottom="5dp"
-            android:textSize="30sp"
+            android:textSize="20sp"
             android:textColor="#000000"
             android:textAlignment="center"/>
 
@@ -67,7 +66,6 @@
                 android:layout_weight="1"
                 android:layout_marginRight="10dp"
                 android:layout_marginLeft="20dp"
-                android:textSize="20sp"
                 android:text="Alface"/>
 
             <CheckBox
@@ -77,7 +75,6 @@
                 android:layout_weight="1"
                 android:layout_marginLeft="10dp"
                 android:layout_marginRight="20dp"
-                android:textSize="20sp"
                 android:text="Tomate"/>
 
             <CheckBox
@@ -87,7 +84,6 @@
                 android:layout_weight="1"
                 android:layout_marginRight="10dp"
                 android:layout_marginLeft="20dp"
-                android:textSize="20sp"
                 android:text="Cebola"/>
         </LinearLayout>
 
@@ -102,7 +98,6 @@
                 android:layout_weight="1"
                 android:layout_marginRight="10dp"
                 android:layout_marginLeft="20dp"
-                android:textSize="20sp"
                 android:text="Picles"/>
 
             <CheckBox
@@ -112,7 +107,6 @@
                 android:layout_weight="1"
                 android:layout_marginLeft="10dp"
                 android:layout_marginRight="20dp"
-                android:textSize="20sp"
                 android:text="Azeitona"/>
 
             <CheckBox
@@ -122,7 +116,6 @@
                 android:layout_weight="1"
                 android:layout_marginRight="10dp"
                 android:layout_marginLeft="20dp"
-                android:textSize="20sp"
                 android:text="Passas"/>
         </LinearLayout>
 
@@ -130,8 +123,7 @@
             android:id="@+id/checkCabbage"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="280dp"
-            android:textSize="20sp"
+            android:layout_marginLeft="130dp"
             android:text="Repolho"/>
     </LinearLayout>
 
@@ -139,7 +131,7 @@
         android:orientation="vertical"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="295dp"
+        android:layout_marginTop="240dp"
         android:background="#FFCC00">
 
         <TextView
@@ -148,7 +140,7 @@
             android:text="Opções de Molho:"
             android:layout_marginTop="5dp"
             android:layout_marginBottom="5dp"
-            android:textSize="30sp"
+            android:textSize="20sp"
             android:textColor="#000000"
             android:textAlignment="center"/>
 
@@ -162,9 +154,8 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:layout_marginRight="10dp"
-                android:layout_marginLeft="20dp"
-                android:text="Picante"
-                android:textSize="20sp" />
+                android:layout_marginLeft="10dp"
+                android:text="Picante"/>
 
             <CheckBox
                 android:id="@+id/checkMangoSauce"
@@ -173,8 +164,7 @@
                 android:layout_weight="1"
                 android:layout_marginLeft="10dp"
                 android:layout_marginRight="10dp"
-                android:text="Manga"
-                android:textSize="20sp" />
+                android:text="Manga"/>
 
             <CheckBox
                 android:id="@+id/checkTahineSauce"
@@ -183,8 +173,7 @@
                 android:layout_weight="1"
                 android:layout_marginRight="10dp"
                 android:layout_marginLeft="10dp"
-                android:text="Tahine"
-                android:textSize="20sp" />
+                android:text="Tahine"/>
         </LinearLayout>
 
         <LinearLayout
@@ -197,10 +186,8 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:layout_marginRight="10dp"
-                android:layout_marginLeft="20dp"
-                android:text="Honey"
-                android:textSize="20sp"
-                />
+                android:layout_marginLeft="10dp"
+                android:text="Honey"/>
 
             <CheckBox
                 android:id="@+id/checkBarbecueSauce"
@@ -209,8 +196,7 @@
                 android:layout_weight="1"
                 android:layout_marginLeft="10dp"
                 android:layout_marginRight="10dp"
-                android:text="Barbecue"
-                android:textSize="20sp" />
+                android:text="Barbecue"/>
 
             <CheckBox
                 android:id="@+id/checkChimichurriSauce"
@@ -218,8 +204,7 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:layout_marginLeft="10dp"
-                android:text="Chimichurri"
-                android:textSize="20sp" />
+                android:text="Chimichurri"/>
         </LinearLayout>
 
         <LinearLayout
@@ -231,18 +216,18 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:layout_marginLeft="20dp"
-                android:text="Pasta de Alho"
-                android:textSize="20sp" />
+                android:layout_marginRight="10dp"
+                android:layout_marginLeft="40dp"
+                android:text="Pasta de Alho"/>
 
             <CheckBox
                 android:id="@+id/checkHoneyMustardSauce"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_weight="0.5"
-                android:layout_marginLeft="10dp"
-                android:text="Mostarda com Mel"
-                android:textSize="20sp" />
+                android:layout_weight="1"
+                android:layout_marginLeft="5dp"
+                android:layout_marginRight="10dp"
+                android:text="Mostarda com Mel"/>
         </LinearLayout>
 
     </LinearLayout>
@@ -251,7 +236,7 @@
         android:orientation="vertical"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="450dp"
+        android:layout_marginTop="390dp"
         android:background="#FFCC00">
 
         <TextView
@@ -260,7 +245,7 @@
             android:text="Opções de Queijo:"
             android:layout_marginTop="5dp"
             android:layout_marginBottom="5dp"
-            android:textSize="30sp"
+            android:textSize="20sp"
             android:textColor="#000000"
             android:textAlignment="center"/>
 
@@ -275,17 +260,16 @@
                 android:layout_weight="1"
                 android:layout_marginRight="10dp"
                 android:layout_marginLeft="20dp"
-                android:text="Cheddar"
-                android:textSize="20sp" />
+                android:text="Cheddar"/>
 
             <CheckBox
                 android:id="@+id/checkCatupiry"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_weight="0.5"
+                android:layout_weight="1"
                 android:layout_marginLeft="10dp"
-                android:text="Catupiry"
-                android:textSize="20sp" />
+                android:layout_marginRight="20dp"
+                android:text="Catupiry"/>
         </LinearLayout>
     </LinearLayout>
 
@@ -293,33 +277,31 @@
         android:orientation="horizontal"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="800dp">
+        android:layout_marginTop="480dp">
 
         <Button
             android:id="@+id/buttonCleanOp"
             android:layout_width="match_parent"
-            android:layout_height="100dp"
+            android:layout_height="60dp"
             android:layout_weight="1"
             android:text="Limpar Opções"
             android:layout_marginRight="10dp"
             android:layout_marginLeft="20dp"
             android:onClick="callClearOptions"
             android:textColor="#FFFFFF"
-            android:textSize="20sp"
             android:background="#FF0000"/>
 
         <Button
             android:id="@+id/buttonNext"
             style="@style/Widget.AppCompat.Button"
             android:layout_width="match_parent"
-            android:layout_height="100dp"
+            android:layout_height="60dp"
             android:layout_marginLeft="10dp"
             android:layout_marginRight="20dp"
             android:layout_weight="1"
             android:background="#FF0000"
             android:onClick="callConfirmOrderScreen"
             android:text="Próximo"
-            android:textSize="20sp"
             android:textColor="#FFFFFF" />
     </LinearLayout>
 

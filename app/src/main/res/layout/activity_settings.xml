@@ -10,44 +10,40 @@
     <Button
         android:id="@+id/button_new_product"
         android:layout_width="match_parent"
-        android:layout_height="100dp"
-        android:layout_marginTop="20dp"
+        android:layout_height="60dp"
+        android:layout_marginTop="10dp"
         android:text="Novo Produto"
         android:background="#FF0000"
         android:textColor="#FFFFFF"
-        android:textSize="20sp"
         android:onClick="callNewProductScreen"/>
 
     <Button
         android:id="@+id/button_menu"
         android:layout_width="match_parent"
-        android:layout_height="100dp"
-        android:layout_marginTop="20dp"
-        android:text="Cardápio"
+        android:layout_height="60dp"
+        android:layout_marginTop="10dp"
+        android:text="Cardapio"
         android:background="#FF0000"
         android:textColor="#FFFFFF"
-        android:textSize="20sp"
         android:onClick="callMenuScreen"/>
 
     <Button
         android:id="@+id/button_all_products"
         android:layout_width="match_parent"
-        android:layout_height="100dp"
-        android:layout_marginTop="20dp"
+        android:layout_height="60dp"
+        android:layout_marginTop="10dp"
         android:text="Todos os Produtos"
         android:background="#FF0000"
         android:textColor="#FFFFFF"
-        android:textSize="20sp"
         android:onClick="callAllProductsScreen"/>
 
     <Button
         android:id="@+id/stockButton"
         android:layout_width="match_parent"
-        android:layout_height="100dp"
-        android:layout_marginTop="20dp"
+        android:layout_height="60dp"
+        android:layout_marginTop="10dp"
         android:text="@string/stockButton"
         android:background="#FF0000"
         android:textColor="#FFFFFF"
-        android:textSize="20sp"
         android:onClick="callStockScreen"/>
 </LinearLayout>

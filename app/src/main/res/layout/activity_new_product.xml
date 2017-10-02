@@ -13,7 +13,7 @@
         android:id="@+id/textName"
         android:layout_width="match_parent"
         android:layout_height="60dp"
-        android:textSize="30sp"
+        android:textSize="20sp"
         android:inputType="textCapWords"
         android:paddingLeft="10dp"
         android:hint="Nome"
@@ -24,11 +24,10 @@
         android:id="@+id/textPrice"
         android:layout_width="match_parent"
         android:layout_height="60dp"
-        android:textSize="30sp"
+        android:textSize="20sp"
         android:inputType="numberDecimal"
         android:paddingLeft="10dp"
         android:hint="Preço"
-
         android:layout_marginTop="20dp"
         android:background="#FFCC00"/>
 
@@ -38,7 +37,6 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
         android:text="Possui Molho"
-        android:textSize="20sp"
         android:background="#FFCC00"/>
 
     <CheckBox
@@ -47,7 +45,6 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
         android:text="Possui Salada"
-        android:textSize="20sp"
         android:background="#FFCC00"/>
 
     <CheckBox
@@ -56,7 +53,6 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
         android:text="Possui Queijo"
-        android:textSize="20sp"
         android:background="#FFCC00"/>
 
     <CheckBox
@@ -65,19 +61,18 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
         android:text="Está no Cardápio"
-        android:textSize="20sp"
         android:background="#FFCC00"/>
 
     <Button
         android:id="@+id/button"
-        android:layout_width="match_parent"
-        android:layout_height="100dp"
+        android:layout_width="300dp"
+        android:layout_height="56dp"
         android:layout_gravity="center"
         android:layout_marginTop="20dp"
         android:background="#FF0000"
         android:textColor="#FFFFFF"
-        android:textSize="20sp"
         android:onClick="callCreateProduct"
-        android:text="Adicionar" />
+        android:text="Adicionar"
+        android:textSize="19sp" />
 
 </LinearLayout>

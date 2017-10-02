@@ -63,15 +63,15 @@ public class ProductDAO extends SQLiteOpenHelper{
 
     @NonNull
     private ContentValues getContentValues(Product product) {
-        ContentValues productValues = new ContentValues();
-        productValues.put("ProductName", product.getName());
-        productValues.put("ProductPrice", product.getPrice());
-        productValues.put("HasSauce", product.hasSauce());
-        productValues.put("HasSalad", product.hasSalad());
-        productValues.put("HasCheese", product.hasCheese());
-        productValues.put("OnMenu", product.isOnMenu());
+        ContentValues studentValues = new ContentValues();
+        studentValues.put("ProductName", product.getName());
+        studentValues.put("ProductPrice", product.getPrice());
+        studentValues.put("HasSauce", product.hasSauce());
+        studentValues.put("HasSalad", product.hasSalad());
+        studentValues.put("HasCheese", product.hasCheese());
+        studentValues.put("OnMenu", product.isOnMenu());
 
-        return productValues;
+        return studentValues;
     }
 
     public LinkedList<Product> read() {

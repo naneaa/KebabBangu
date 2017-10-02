@@ -13,8 +13,7 @@
         android:layout_weight="1"
         android:textAlignment="center"
         android:gravity="center"
-        android:text="00"
-        android:textSize="20sp"/>
+        android:text="00" />
 
     <TextView
         android:id="@+id/product_name"
@@ -23,8 +22,7 @@
         android:layout_weight="3"
         android:textAlignment="center"
         android:gravity="center"
-        android:text="Product Name"
-        android:textSize="20sp"/>
+        android:text="Product Name" />
 
     <TextView
         android:id="@+id/product_value"
@@ -33,8 +31,7 @@
         android:layout_weight="1"
         android:textAlignment="center"
         android:gravity="center"
-        android:text="R$ 00.00"
-        android:textSize="20sp"/>
+        android:text="R$ 00.00" />
 
     <TextView
         android:id="@+id/product_sauce"
@@ -43,8 +40,7 @@
         android:layout_weight="1"
         android:textAlignment="center"
         android:gravity="center"
-        android:text="Sim"
-        android:textSize="20sp"/>
+        android:text="Sim" />
 
     <TextView
         android:id="@+id/product_salad"
@@ -53,8 +49,7 @@
         android:layout_weight="1"
         android:textAlignment="center"
         android:gravity="center"
-        android:text="Sim"
-        android:textSize="20sp"/>
+        android:text="Sim" />
 
     <TextView
         android:id="@+id/product_cheese"
@@ -63,7 +58,6 @@
         android:layout_weight="1"
         android:textAlignment="center"
         android:gravity="center"
-        android:text="Sim"
-        android:textSize="20sp"/>
+        android:text="Sim" />
 
 </LinearLayout>
