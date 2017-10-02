@@ -5,7 +5,9 @@ package com.elaine.kebabbangu.base;
  */
 
 public class Register {
+    private int id;
 
+    public Register(){}
 
 
 
