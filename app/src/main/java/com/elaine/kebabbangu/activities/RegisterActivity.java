@@ -18,9 +18,6 @@ import java.text.DateFormat;
 import java.text.DecimalFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
-import java.util.LinkedList;
-
-import static java.sql.Types.NULL;
 
 public class RegisterActivity extends AppCompatActivity {
 
@@ -79,8 +76,8 @@ public class RegisterActivity extends AppCompatActivity {
                             registerDAO.create(register);
 
                             DecimalFormat df = new DecimalFormat("0.00");
-                            totalText.setText("Em caixa: R$ " + df.format(editable));
-                            cashText.setText("Dinheiro: R$ " + df.format(editable));
+                            totalText.setText("Em caixa: R$ " + df.format(register.getTotal()));
+                            cashText.setText("Dinheiro: R$ " + df.format(register.getCash()));
                         } catch (Exception e) {
                             Toast.makeText(RegisterActivity.this, "O caixa já foi aberto hoje!",
                                     Toast.LENGTH_LONG).show();
@@ -89,7 +86,8 @@ public class RegisterActivity extends AppCompatActivity {
                 })
                 .setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int whichButton) {
-
+                        RegisterDAO registerDAO = new RegisterDAO(RegisterActivity.this);
+                        registerDAO.deleteAll();
                     }
                 }).show();
     }

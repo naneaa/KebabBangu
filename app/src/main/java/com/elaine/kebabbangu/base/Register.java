@@ -6,12 +6,6 @@ import java.io.Serializable;
  * Created by Elaine on 6/3/2017.
  */
 
-<<<<<<< HEAD
-public class Register {
-    private int id;
-
-    public Register(){}
-=======
 public class Register  implements Serializable{
     private Integer id;
     private double startingValue;
@@ -62,7 +56,7 @@ public class Register  implements Serializable{
     public void setCredit(double creditValue) {
         this.creditValue = creditValue;
     }
->>>>>>> parent of 9d4ced1... Revert "Oh well"
+
 
     public double getTotal() {
         return totalValue;

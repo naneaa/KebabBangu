@@ -25,6 +25,30 @@ public class RegisterDAO extends SQLiteOpenHelper {
     }
 
     public void onCreate(SQLiteDatabase db) {
+        String sqlCreateTableOrders =
+                "CREATE TABLE Orders (" +
+                        "OrderID INTEGER PRIMARY KEY,"+
+                        "OrderNumber INTEGER NOT NULL," +
+                        "OrderClientName TEXT NOT NULL,"+
+                        "IsPaid TEXT NOT NULL," +
+                        "OrderPaymentMethod TEXT,"+
+                        "OrderPrice DOUBLE NOT NULL,"+
+                        "OrderDate TEXT NOT NULL UNIQUE)";
+
+        db.execSQL(sqlCreateTableOrders);
+
+        String sqlCreateTableProducts =
+                "CREATE TABLE Products (" +
+                        "ProductID INTEGER PRIMARY KEY,"+
+                        "ProductName TEXT NOT NULL,"+
+                        "ProductPrice DOUBLE NOT NULL," +
+                        "HasSauce TEXT NOT NULL," +
+                        "HasSalad TEXT NOT NULL," +
+                        "HasCheese TEXT NOT NULL," +
+                        "OnMenu TEXT NOT NULL)";
+
+        db.execSQL(sqlCreateTableProducts);
+
         String sqlCreateTableRegister =
                 "CREATE TABLE Registers (" +
                         "RegisterID INTEGER PRIMARY KEY,"+

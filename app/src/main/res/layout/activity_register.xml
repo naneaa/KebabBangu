@@ -17,7 +17,7 @@
         android:gravity="center"
         android:textColor="#000000"
         android:background="@color/myYellow"
-        android:text="Em caixa: R$ 00.00"
+        android:text="Em caixa: R$ 00,00"
         android:textSize="80sp" />
 
     <TextView
@@ -30,7 +30,7 @@
         android:gravity="center"
         android:textColor="#000000"
         android:background="@color/myYellow"
-        android:text="Dinheiro: R$ 00.00"
+        android:text="Dinheiro: R$ 00,00"
         android:textSize="40sp" />
 
     <TextView
@@ -43,7 +43,7 @@
         android:gravity="center"
         android:textColor="#000000"
         android:background="@color/myYellow"
-        android:text="Débito: R$ 00.00"
+        android:text="Débito: R$ 00,00"
         android:textSize="40sp" />
 
     <TextView
@@ -56,7 +56,7 @@
         android:gravity="center"
         android:textColor="#000000"
         android:background="@color/myYellow"
-        android:text="Crédito: R$ 00.00"
+        android:text="Crédito: R$ 00,00"
         android:textSize="40sp" />
 
     <Button

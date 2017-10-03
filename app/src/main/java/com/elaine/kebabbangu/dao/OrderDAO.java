@@ -38,6 +38,30 @@ public class OrderDAO extends SQLiteOpenHelper{
                         "OrderDate TEXT NOT NULL)";
 
         db.execSQL(sqlCreateTableOrders);
+
+        String sqlCreateTableProducts =
+                "CREATE TABLE Products (" +
+                        "ProductID INTEGER PRIMARY KEY,"+
+                        "ProductName TEXT NOT NULL,"+
+                        "ProductPrice DOUBLE NOT NULL," +
+                        "HasSauce TEXT NOT NULL," +
+                        "HasSalad TEXT NOT NULL," +
+                        "HasCheese TEXT NOT NULL," +
+                        "OnMenu TEXT NOT NULL)";
+
+        db.execSQL(sqlCreateTableProducts);
+
+        String sqlCreateTableRegister =
+                "CREATE TABLE Registers (" +
+                        "RegisterID INTEGER PRIMARY KEY,"+
+                        "RegisterStarting DOUBLE NOT NULL,"+
+                        "RegisterTotal DOUBLE NOT NULL,"+
+                        "RegisterCash DOUBLE NOT NULL,"+
+                        "RegisterDebit DOUBLE NOT NULL,"+
+                        "RegisterCredit DOUBLE NOT NULL,"+
+                        "RegisterDate TEXT NOT NULL)";
+
+        db.execSQL(sqlCreateTableRegister);
     }
 
     @Override

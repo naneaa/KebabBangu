@@ -23,6 +23,18 @@ public class ProductDAO extends SQLiteOpenHelper{
 
     @Override
     public void onCreate(SQLiteDatabase db) {
+        String sqlCreateTableOrders =
+                "CREATE TABLE Orders (" +
+                        "OrderID INTEGER PRIMARY KEY,"+
+                        "OrderNumber INTEGER NOT NULL," +
+                        "OrderClientName TEXT NOT NULL,"+
+                        "IsPaid TEXT NOT NULL," +
+                        "OrderPaymentMethod TEXT,"+
+                        "OrderPrice DOUBLE NOT NULL,"+
+                        "OrderDate TEXT NOT NULL)";
+
+        db.execSQL(sqlCreateTableOrders);
+
         String sqlCreateTableProducts =
                 "CREATE TABLE Products (" +
                         "ProductID INTEGER PRIMARY KEY,"+
@@ -34,6 +46,18 @@ public class ProductDAO extends SQLiteOpenHelper{
                         "OnMenu TEXT NOT NULL)";
 
         db.execSQL(sqlCreateTableProducts);
+
+        String sqlCreateTableRegister =
+                "CREATE TABLE Registers (" +
+                        "RegisterID INTEGER PRIMARY KEY,"+
+                        "RegisterStarting DOUBLE NOT NULL,"+
+                        "RegisterTotal DOUBLE NOT NULL,"+
+                        "RegisterCash DOUBLE NOT NULL,"+
+                        "RegisterDebit DOUBLE NOT NULL,"+
+                        "RegisterCredit DOUBLE NOT NULL,"+
+                        "RegisterDate TEXT NOT NULL)";
+
+        db.execSQL(sqlCreateTableRegister);
     }
 
     @Override
