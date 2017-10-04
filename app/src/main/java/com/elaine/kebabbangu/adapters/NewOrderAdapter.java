@@ -31,25 +31,24 @@ public class NewOrderAdapter extends BaseAdapter{
     public Object getItem(int position) { return this.order.getProducts().get(position); }
 
     @Override
-    public long getItemId(int position) { return this.order.getId(); }
+    public long getItemId(int position) { return this.order.getProducts().get(position).getId(); }
 
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
-        Product product = this.order.getProducts().get(position);
         LayoutInflater inflater = LayoutInflater.from(context);
 
         View view = convertView;
         if(view == null){
-            view = inflater.inflate(R.layout.product_list, parent, false);
+            view = inflater.inflate(R.layout.product_order_list, parent, false);
         }
 
-        TextView orderNumber = (TextView) view.findViewById(R.id.order_number);
-        TextView orderString = (TextView) view.findViewById(R.id.order_string);
-        TextView orderValue = (TextView) view.findViewById(R.id.order_value);
+        TextView productNameText = (TextView) view.findViewById(R.id.productNameText);
+        TextView productPriceText = (TextView) view.findViewById(R.id.productPriceText);
+        TextView productDescription = (TextView) view.findViewById(R.id.productDescription);
 
-        orderNumber.setText(order.getQuantity().get(position));
-        orderString.setText(order.getProducts().get(position).getName());
-        orderValue.setText("R$ " + String.format("%1$.2f", order.getQuantity().get(position) * order.getProducts().get(position).getPrice()));
+        productNameText.setText(order.getProducts().get(position).getName());
+        productPriceText.setText("R$ " + String.format("%1$.2f", order.getProducts().get(position).getPrice()));
+        productDescription.setText(order.getDescriptions().get(position));
 
         return view;
     }

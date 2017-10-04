@@ -290,6 +290,36 @@
     </LinearLayout>
 
     <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="540dp"
+        android:background="#FFCC00">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Observação:"
+            android:layout_marginTop="5dp"
+            android:layout_marginBottom="5dp"
+            android:textSize="30sp"
+            android:textColor="#000000"
+            android:textAlignment="center"/>
+
+        <EditText
+            android:id="@+id/textObs"
+            android:layout_width="match_parent"
+            android:layout_height="100dp"
+            android:layout_marginLeft="20dp"
+            android:inputType="textCapSentences"
+            android:background="@color/myYellow"
+            android:hint="Observações sobre o pedido."
+            android:textColor="#000000"
+            android:textSize="20sp" />
+
+    </LinearLayout>
+
+    <LinearLayout
         android:orientation="horizontal"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -322,5 +352,7 @@
             android:textSize="20sp"
             android:textColor="#FFFFFF" />
     </LinearLayout>
+
+
 
 </RelativeLayout>

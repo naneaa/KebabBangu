@@ -138,7 +138,6 @@ public class OrderDAO extends SQLiteOpenHelper{
             }
 
             order.setProducts(products);
-            order.setQuantity(quantity);
             order.setDescriptions(description);
             orders.add(order);
 

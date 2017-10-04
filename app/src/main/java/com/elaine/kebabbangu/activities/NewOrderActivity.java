@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.CheckBox;
+import android.widget.EditText;
 import android.widget.Spinner;
 
 import com.elaine.kebabbangu.base.Order;
@@ -27,6 +28,7 @@ public class NewOrderActivity extends AppCompatActivity {
     private CheckBox checkHotSauce, checkMangoSauce, checkTahineSauce, checkHoneySauce,
                 checkBarbecueSauce, checkChimichurriSauce, checkGarlicSauce, checkHoneyMustardSauce;
     private CheckBox checkCheddar, checkCatupiry;
+    private EditText textObs;
 
     @Override
     protected void onResume() {
@@ -39,6 +41,9 @@ public class NewOrderActivity extends AppCompatActivity {
         setContentView(R.layout.activity_new_order);
 
         order = new Order();
+        DateFormat sdf = new SimpleDateFormat("yyyy/MM/dd");
+        Date date = new Date();
+        order.setDate(sdf.format(date));
 
         spinner = (Spinner) findViewById(R.id.spinner_menu);
 
@@ -61,6 +66,8 @@ public class NewOrderActivity extends AppCompatActivity {
 
         checkCheddar = (CheckBox) findViewById(R.id.checkCheddar);
         checkCatupiry = (CheckBox) findViewById(R.id.checkCatupiry);
+
+        textObs = (EditText) findViewById(R.id.textObs);
 
         loadSpinnerData();
     }
@@ -88,49 +95,52 @@ public class NewOrderActivity extends AppCompatActivity {
 
         if(selectedProduct.hasSalad()){
             if(checkLettuce.isChecked())
-                productDescription += "Alface, ";
+                productDescription += "Alface. ";
             if(checkTomato.isChecked())
-                productDescription += "Tomate, ";
+                productDescription += "Tomate. ";
             if(checkOnion.isChecked())
-                productDescription += "Cebola, ";
+                productDescription += "Cebola. ";
             if(checkPicles.isChecked())
-                productDescription += "Picles, ";
+                productDescription += "Picles. ";
             if(checkOlives.isChecked())
-                productDescription += "Azeitona, ";
+                productDescription += "Azeitona. ";
             if(checkRaisins.isChecked())
-                productDescription += "Passas, ";
+                productDescription += "Passas. ";
             if(checkCabbage.isChecked())
-                productDescription += "Repolho, ";
+                productDescription += "Repolho. ";
         }
 
         if(selectedProduct.hasSauce()){
             if(checkHotSauce.isChecked())
-                productDescription += "Picante, ";
+                productDescription += "Picante. ";
             if(checkMangoSauce.isChecked())
-                productDescription += "Manga, ";
+                productDescription += "Manga. ";
             if(checkTahineSauce.isChecked())
-                productDescription += "Tahine, ";
+                productDescription += "Tahine. ";
             if(checkHoneySauce.isChecked())
-                productDescription += "Mel, ";
+                productDescription += "Mel. ";
             if(checkBarbecueSauce.isChecked())
-                productDescription += "Barbecue, ";
+                productDescription += "Barbecue. ";
             if(checkChimichurriSauce.isChecked())
-                productDescription += "ChimiChurri, ";
+                productDescription += "ChimiChurri. ";
             if(checkGarlicSauce.isChecked())
-                productDescription += "Pasta de Alho, ";
+                productDescription += "Pasta de Alho. ";
             if(checkHoneyMustardSauce.isChecked())
-                productDescription += "Mostarda com Mel, ";
+                productDescription += "Mostarda com Mel. ";
         }
 
         if(selectedProduct.hasCheese()){
             if(checkCheddar.isChecked())
-                productDescription += "Cheddar, ";
+                productDescription += "Cheddar. ";
             if(checkCatupiry.isChecked())
-                productDescription += "Catupiry, ";
+                productDescription += "Catupiry. ";
         }
 
-        order.AddItem(selectedProduct, productDescription);
+        productDescription += textObs.getText();
+        System.out.println(productDescription);
 
+        order.AddItem(selectedProduct, productDescription);
+        callClearOptions(view);
     }
 
     public void callClearOptions(View view){
@@ -153,11 +163,11 @@ public class NewOrderActivity extends AppCompatActivity {
 
         checkCheddar.setChecked(false);
         checkCatupiry.setChecked(false);
+
+        textObs.setText("");
     }
 
     public void callConfirmOrderScreen(View view){
-        Order order = new Order();
-
         Intent intent = new Intent(NewOrderActivity.this, ConfirmOrderActivity.class);
         intent.putExtra("order", order);
         startActivity(intent);

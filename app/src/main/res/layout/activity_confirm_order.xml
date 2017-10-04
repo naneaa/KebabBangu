@@ -1,9 +1,101 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.elaine.kebabbangu.activities.ConfirmOrderActivity">
+    android:background="@drawable/fundo"
+    tools:context="com.elaine.kebabbangu.activities.AllProductsActivity">
 
-</android.support.constraint.ConstraintLayout>
+    <ListView
+        android:id="@+id/orderList"
+        android:layout_width="match_parent"
+        android:layout_height="550dp"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior">
+
+    </ListView>
+
+    <TextView
+        android:id="@+id/textTotal"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:layout_marginTop="610dp"
+        android:background="@color/myYellow"
+        android:textSize="30dp"
+        android:textColor="#000000"
+        android:textAlignment="center"
+        android:text="Valor Total: R$ 00,00"/>
+
+    <EditText
+        android:id="@+id/clientText"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:textSize="30sp"
+        android:inputType="textCapWords"
+        android:paddingLeft="10dp"
+        android:hint="Nome do Cliente"
+        android:layout_marginTop="550dp"
+        android:background="#FFCC00"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:layout_marginTop="650dp"
+        android:background="@color/myYellow"
+        android:textSize="30dp"
+        android:textColor="#000000"
+        android:textAlignment="center"
+        android:text="Forma de Pagamento:"/>
+
+    <RadioGroup
+        android:layout_width="match_parent"
+        android:layout_height="80dp"
+        android:orientation="horizontal"
+        android:background="@color/myYellow"
+        android:layout_marginTop="700dp">
+
+        <RadioButton
+            android:id="@+id/radioCash"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:layout_marginRight="10dp"
+            android:layout_marginLeft="20dp"
+            android:text="Dinheiro"
+            android:textSize="20sp"
+            />
+
+        <RadioButton
+            android:id="@+id/radioDebit"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:text="Débito"
+            android:textSize="20sp" />
+
+        <RadioButton
+            android:id="@+id/radioCredit"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:layout_marginLeft="10dp"
+            android:text="Crédito"
+            android:textSize="20sp" />
+
+    </RadioGroup>
+
+    <CheckBox
+        android:id="@+id/checkPaid"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="740dp"
+        android:layout_marginLeft="250dp"
+        android:textSize="20dp"
+        android:textColor="#000000"
+        android:text="Pagamento Realizado" />
+
+
+
+</RelativeLayout>

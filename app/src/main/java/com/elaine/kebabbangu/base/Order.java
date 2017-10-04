@@ -9,7 +9,6 @@ import java.util.LinkedList;
 
 public class Order implements Serializable {
     private LinkedList<Product> products;
-    private LinkedList<Integer> quantity;
     private LinkedList<String> descriptions;
     private int id;
     private int number;
@@ -21,7 +20,6 @@ public class Order implements Serializable {
 
     public Order(int id){
         this.products = new LinkedList<>();
-        this.quantity = new LinkedList<>();
         this.descriptions = new LinkedList<>();
         this.id = id;
         this.price = 0.0;
@@ -30,7 +28,6 @@ public class Order implements Serializable {
 
     public Order(){
         this.products = new LinkedList<>();
-        this.quantity = new LinkedList<>();
         this.descriptions = new LinkedList<>();
         this.price = 0.0;
         this.setPaid(false);
@@ -42,14 +39,6 @@ public class Order implements Serializable {
 
     public void setProducts(LinkedList<Product> products) {
         this.products = products;
-    }
-
-    public LinkedList<Integer> getQuantity() {
-        return quantity;
-    }
-
-    public void setQuantity(LinkedList<Integer> quantity) {
-        this.quantity = quantity;
     }
 
     public int getId() {
@@ -109,23 +98,21 @@ public class Order implements Serializable {
     }
 
     public void AddItem(Product product, String description){
-        if(products.contains(product) && descriptions.get(products.indexOf(product)).equals(description)) {
-            int index = products.indexOf(product);
-            quantity.set(index, quantity.get(index) + 1);
-            descriptions.add(description);
-        } else {
             products.add(product);
-            quantity.add(1);
-            descriptions.add(description);
-        }
 
+            descriptions.add(description);
         price += product.getPrice();
+    }
+
+    public void removeItem(int position){
+        products.remove(position);
+        descriptions.remove(position);
     }
 
     public String toString(){
         String list = "";
         for (int i = 0; i < products.size(); i++){
-            list += quantity.get(i) + " - " + products.get(i).toString() + "\n";
+            list += products.get(i).toString() + "\n";
         }
 
         return "Pedido " + id + "\n" + list + "Valor Total: " + price;
@@ -134,7 +121,7 @@ public class Order implements Serializable {
     public String stringList() {
         String list = "";
         for (int i = 0; i < products.size(); i++){
-            list += "(" + quantity.get(i) + ") " + products.get(i).getName();
+            list += products.get(i).getName() + descriptions.get(i);
             list += products.size() > 1 ? "\n" : "";
         }
 
