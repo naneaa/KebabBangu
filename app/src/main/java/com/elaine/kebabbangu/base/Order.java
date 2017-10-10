@@ -11,22 +11,13 @@ public class Order implements Serializable {
     private LinkedList<Product> products;
     private LinkedList<String> descriptions;
     private int id;
-    private int number;
     private double price;
     private boolean isPaid;
     private String paymentMethod;
     private String clientName;
     private String date;
 
-    public Order(int id){
-        this.products = new LinkedList<>();
-        this.descriptions = new LinkedList<>();
-        this.id = id;
-        this.price = 0.0;
-        this.setPaid(false);
-    }
-
-    public Order(){
+    public Order() {
         this.products = new LinkedList<>();
         this.descriptions = new LinkedList<>();
         this.price = 0.0;
@@ -49,16 +40,12 @@ public class Order implements Serializable {
         this.id = id;
     }
 
-    public int getNumber() {
-        return number;
-    }
-
-    public void setNumber(int number) {
-        this.number = number;
-    }
-
     public boolean isPaid() {
         return isPaid;
+    }
+
+    public void setPaid(boolean paid) {
+        isPaid = paid;
     }
 
     public LinkedList<String> getDescriptions() {
@@ -67,10 +54,6 @@ public class Order implements Serializable {
 
     public void setDescriptions(LinkedList<String> descriptions) {
         this.descriptions = descriptions;
-    }
-
-    public void setPaid(boolean paid) {
-        isPaid = paid;
     }
 
     public String getPaymentMethod() {
@@ -97,21 +80,21 @@ public class Order implements Serializable {
         this.date = date;
     }
 
-    public void AddItem(Product product, String description){
-            products.add(product);
+    public void AddItem(Product product, String description) {
+        products.add(product);
 
-            descriptions.add(description);
+        descriptions.add(description);
         price += product.getPrice();
     }
 
-    public void removeItem(int position){
+    public void removeItem(int position) {
         products.remove(position);
         descriptions.remove(position);
     }
 
-    public String toString(){
+    public String toString() {
         String list = "";
-        for (int i = 0; i < products.size(); i++){
+        for (int i = 0; i < products.size(); i++) {
             list += products.get(i).toString() + "\n";
         }
 
@@ -120,7 +103,7 @@ public class Order implements Serializable {
 
     public String stringList() {
         String list = "";
-        for (int i = 0; i < products.size(); i++){
+        for (int i = 0; i < products.size(); i++) {
             list += products.get(i).getName() + descriptions.get(i);
             list += products.size() > 1 ? "\n" : "";
         }
@@ -134,6 +117,12 @@ public class Order implements Serializable {
 
     public void setClientName(String clientName) {
         this.clientName = clientName;
+    }
+
+    public void printOrder() {
+        System.out.println(stringList());
+
+        System.out.println(clientName + " " + isPaid + " " + paymentMethod + " " + date);
     }
 
 }

@@ -11,36 +11,33 @@
         android:id="@+id/lista_pedidos"
         android:layout_width="match_parent"
         android:layout_height="499dp"
-        app:layout_behavior="@string/appbar_scrolling_view_behavior">
-    </ListView>
+        app:layout_behavior="@string/appbar_scrolling_view_behavior"></ListView>
 
     <LinearLayout
-        android:orientation="horizontal"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="500dp">
+        android:layout_marginTop="500dp"
+        android:orientation="horizontal">
 
-    <Button
-        android:id="@+id/cancelOrderButton"
-        android:layout_width="match_parent"
-        android:layout_height="60dp"
-        android:layout_weight="1"
-        android:text="@string/button_cancela_pedido"
-        android:layout_marginLeft="5dp"
-        android:layout_marginRight="10dp"
-        android:onClick="callCancelOrder"
-        android:background="@drawable/button"/>
+        <Button
+            android:id="@+id/cancelOrderButton"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:layout_marginLeft="5dp"
+            android:layout_marginRight="10dp"
+            android:layout_weight="1"
+            android:onClick="callCancelOrder"
+            android:text="@string/button_cancela_pedido" />
 
-    <Button
-        android:id="@+id/editOrderButton"
-        android:layout_width="match_parent"
-        android:layout_height="60dp"
-        android:layout_weight="1"
-        android:layout_marginLeft="5dp"
-        android:layout_marginRight="10dp"
-        android:text="@string/button_edita_pedido"
-        android:onClick="callEditOrder"
-        android:background="@drawable/button"/>
+        <Button
+            android:id="@+id/editOrderButton"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:layout_marginLeft="5dp"
+            android:layout_marginRight="10dp"
+            android:layout_weight="1"
+            android:onClick="callEditOrder"
+            android:text="@string/button_edita_pedido" />
     </LinearLayout>
 
 </RelativeLayout>

@@ -1,11 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:orientation="horizontal"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="56dp"
-    android:background="#FFCC00">
+    android:background="#FFCC00"
+    android:orientation="horizontal">
 
 
     <TextView
@@ -13,25 +11,25 @@
         android:layout_width="wrap_content"
         android:layout_height="match_parent"
         android:layout_weight="1"
-        android:textAlignment="center"
         android:gravity="center"
-        android:text="000" />
+        android:text="000"
+        android:textAlignment="center" />
 
     <TextView
         android:id="@+id/order_string"
         android:layout_width="wrap_content"
         android:layout_height="match_parent"
         android:layout_weight="3"
-        android:textAlignment="center"
         android:gravity="center"
-        android:text="Product Name" />
+        android:text="Product Name"
+        android:textAlignment="center" />
 
     <TextView
         android:id="@+id/order_value"
         android:layout_width="wrap_content"
         android:layout_height="match_parent"
         android:layout_weight="1"
-        android:textAlignment="center"
         android:gravity="center"
-        android:text="R$ 18.00" />
+        android:text="R$ 18.00"
+        android:textAlignment="center" />
 </LinearLayout>

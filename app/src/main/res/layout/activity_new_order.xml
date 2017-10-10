@@ -1,29 +1,28 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/fundo"
-    tools:context="com.elaine.kebabbangu.activities.NewOrderActivity" >
+    tools:context="com.elaine.kebabbangu.activities.NewOrderActivity">
 
 
     <LinearLayout
-        android:orientation="horizontal"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="20dp">
+        android:layout_marginTop="20dp"
+        android:orientation="horizontal">
+
         <Spinner
             android:id="@+id/spinner_menu"
             android:layout_width="700dp"
             android:layout_height="100dp"
             android:layout_marginLeft="10dp"
             android:layout_marginRight="10dp"
+            android:layout_weight="4"
             android:background="#FF0000"
             android:popupBackground="#FF6A6B"
-            android:textAlignment="center"
-            android:layout_weight="4"/>
+            android:textAlignment="center" />
 
         <Button
             android:id="@+id/registerButton"
@@ -31,99 +30,101 @@
             android:layout_height="100dp"
             android:layout_marginRight="10dp"
             android:layout_weight="1"
-            android:text="+"
-            android:textSize="30sp"
-            android:textAlignment="center"
+            android:background="#FF0000"
             android:onClick="callAddProductToOrder"
+            android:text="+"
+            android:textAlignment="center"
             android:textColor="#FFFFFF"
-            android:background="#FF0000"/>
+            android:textSize="30sp" />
     </LinearLayout>
 
     <LinearLayout
-        android:orientation="vertical"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="140dp"
-        android:background="#FFCC00">
+        android:background="#FFCC00"
+        android:orientation="vertical">
 
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Opções de Salada:"
-            android:layout_marginTop="5dp"
             android:layout_marginBottom="5dp"
-            android:textSize="30sp"
+            android:layout_marginTop="5dp"
+            android:text="Opções de Salada:"
+            android:textAlignment="center"
             android:textColor="#000000"
-            android:textAlignment="center"/>
+            android:textSize="30sp" />
 
         <LinearLayout
-            android:orientation="horizontal"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
             <CheckBox
                 android:id="@+id/checkLettuce"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:layout_marginRight="10dp"
                 android:layout_marginLeft="20dp"
-                android:textSize="20sp"
-                android:text="Alface"/>
+                android:layout_marginRight="10dp"
+                android:layout_weight="1"
+                android:text="Alface"
+                android:textSize="20sp" />
 
             <CheckBox
                 android:id="@+id/checkTomato"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
                 android:layout_marginLeft="10dp"
                 android:layout_marginRight="20dp"
-                android:textSize="20sp"
-                android:text="Tomate"/>
+                android:layout_weight="1"
+                android:text="Tomate"
+                android:textSize="20sp" />
 
             <CheckBox
                 android:id="@+id/checkOnion"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:layout_marginRight="10dp"
                 android:layout_marginLeft="20dp"
-                android:textSize="20sp"
-                android:text="Cebola"/>
+                android:layout_marginRight="10dp"
+                android:layout_weight="1"
+                android:text="Cebola"
+                android:textSize="20sp" />
         </LinearLayout>
 
         <LinearLayout
-            android:orientation="horizontal"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
             <CheckBox
                 android:id="@+id/checkPicles"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:layout_marginRight="10dp"
                 android:layout_marginLeft="20dp"
-                android:textSize="20sp"
-                android:text="Picles"/>
+                android:layout_marginRight="10dp"
+                android:layout_weight="1"
+                android:text="Picles"
+                android:textSize="20sp" />
 
             <CheckBox
                 android:id="@+id/checkOlives"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
                 android:layout_marginLeft="10dp"
                 android:layout_marginRight="20dp"
-                android:textSize="20sp"
-                android:text="Azeitona"/>
+                android:layout_weight="1"
+                android:text="Azeitona"
+                android:textSize="20sp" />
 
             <CheckBox
                 android:id="@+id/checkRaisins"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:layout_marginRight="10dp"
                 android:layout_marginLeft="20dp"
-                android:textSize="20sp"
-                android:text="Passas"/>
+                android:layout_marginRight="10dp"
+                android:layout_weight="1"
+                android:text="Passas"
+                android:textSize="20sp" />
         </LinearLayout>
 
         <CheckBox
@@ -131,38 +132,39 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginLeft="280dp"
-            android:textSize="20sp"
-            android:text="Repolho"/>
+            android:text="Repolho"
+            android:textSize="20sp" />
     </LinearLayout>
 
     <LinearLayout
-        android:orientation="vertical"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="295dp"
-        android:background="#FFCC00">
+        android:background="#FFCC00"
+        android:orientation="vertical">
 
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Opções de Molho:"
-            android:layout_marginTop="5dp"
             android:layout_marginBottom="5dp"
-            android:textSize="30sp"
+            android:layout_marginTop="5dp"
+            android:text="Opções de Molho:"
+            android:textAlignment="center"
             android:textColor="#000000"
-            android:textAlignment="center"/>
+            android:textSize="30sp" />
 
         <LinearLayout
-            android:orientation="horizontal"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
             <CheckBox
                 android:id="@+id/checkHotSauce"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:layout_marginRight="10dp"
                 android:layout_marginLeft="20dp"
+                android:layout_marginRight="10dp"
+                android:layout_weight="1"
                 android:text="Picante"
                 android:textSize="20sp" />
 
@@ -170,9 +172,9 @@
                 android:id="@+id/checkMangoSauce"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
                 android:layout_marginLeft="10dp"
                 android:layout_marginRight="10dp"
+                android:layout_weight="1"
                 android:text="Manga"
                 android:textSize="20sp" />
 
@@ -180,35 +182,35 @@
                 android:id="@+id/checkTahineSauce"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:layout_marginRight="10dp"
                 android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:layout_weight="1"
                 android:text="Tahine"
                 android:textSize="20sp" />
         </LinearLayout>
 
         <LinearLayout
-            android:orientation="horizontal"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
             <CheckBox
                 android:id="@+id/checkHoneySauce"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:layout_marginRight="10dp"
                 android:layout_marginLeft="20dp"
+                android:layout_marginRight="10dp"
+                android:layout_weight="1"
                 android:text="Honey"
-                android:textSize="20sp"
-                />
+                android:textSize="20sp" />
 
             <CheckBox
                 android:id="@+id/checkBarbecueSauce"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
                 android:layout_marginLeft="10dp"
                 android:layout_marginRight="10dp"
+                android:layout_weight="1"
                 android:text="Barbecue"
                 android:textSize="20sp" />
 
@@ -216,22 +218,23 @@
                 android:id="@+id/checkChimichurriSauce"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
                 android:layout_marginLeft="10dp"
+                android:layout_weight="1"
                 android:text="Chimichurri"
                 android:textSize="20sp" />
         </LinearLayout>
 
         <LinearLayout
-            android:orientation="horizontal"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
             <CheckBox
                 android:id="@+id/checkGarlicSauce"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
                 android:layout_marginLeft="20dp"
+                android:layout_weight="1"
                 android:text="Pasta de Alho"
                 android:textSize="20sp" />
 
@@ -239,8 +242,8 @@
                 android:id="@+id/checkHoneyMustardSauce"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_weight="0.5"
                 android:layout_marginLeft="10dp"
+                android:layout_weight="0.5"
                 android:text="Mostarda com Mel"
                 android:textSize="20sp" />
         </LinearLayout>
@@ -248,33 +251,34 @@
     </LinearLayout>
 
     <LinearLayout
-        android:orientation="vertical"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="450dp"
-        android:background="#FFCC00">
+        android:background="#FFCC00"
+        android:orientation="vertical">
 
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Opções de Queijo:"
-            android:layout_marginTop="5dp"
             android:layout_marginBottom="5dp"
-            android:textSize="30sp"
+            android:layout_marginTop="5dp"
+            android:text="Opções de Queijo:"
+            android:textAlignment="center"
             android:textColor="#000000"
-            android:textAlignment="center"/>
+            android:textSize="30sp" />
 
         <LinearLayout
-            android:orientation="horizontal"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
             <CheckBox
                 android:id="@+id/checkCheddar"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:layout_marginRight="10dp"
                 android:layout_marginLeft="20dp"
+                android:layout_marginRight="10dp"
+                android:layout_weight="1"
                 android:text="Cheddar"
                 android:textSize="20sp" />
 
@@ -282,61 +286,61 @@
                 android:id="@+id/checkCatupiry"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_weight="0.5"
                 android:layout_marginLeft="10dp"
+                android:layout_weight="0.5"
                 android:text="Catupiry"
                 android:textSize="20sp" />
         </LinearLayout>
     </LinearLayout>
 
     <LinearLayout
-        android:orientation="vertical"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="540dp"
-        android:background="#FFCC00">
+        android:background="#FFCC00"
+        android:orientation="vertical">
 
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Observação:"
-            android:layout_marginTop="5dp"
             android:layout_marginBottom="5dp"
-            android:textSize="30sp"
+            android:layout_marginTop="5dp"
+            android:text="Observação:"
+            android:textAlignment="center"
             android:textColor="#000000"
-            android:textAlignment="center"/>
+            android:textSize="30sp" />
 
         <EditText
             android:id="@+id/textObs"
             android:layout_width="match_parent"
             android:layout_height="100dp"
             android:layout_marginLeft="20dp"
-            android:inputType="textCapSentences"
             android:background="@color/myYellow"
             android:hint="Observações sobre o pedido."
+            android:inputType="textCapSentences"
             android:textColor="#000000"
             android:textSize="20sp" />
 
     </LinearLayout>
 
     <LinearLayout
-        android:orientation="horizontal"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="800dp">
+        android:layout_marginTop="800dp"
+        android:orientation="horizontal">
 
         <Button
             android:id="@+id/buttonCleanOp"
             android:layout_width="match_parent"
             android:layout_height="100dp"
-            android:layout_weight="1"
-            android:text="Limpar Opções"
-            android:layout_marginRight="10dp"
             android:layout_marginLeft="20dp"
+            android:layout_marginRight="10dp"
+            android:layout_weight="1"
+            android:background="#FF0000"
             android:onClick="callClearOptions"
+            android:text="Limpar Opções"
             android:textColor="#FFFFFF"
-            android:textSize="20sp"
-            android:background="#FF0000"/>
+            android:textSize="20sp" />
 
         <Button
             android:id="@+id/buttonNext"
@@ -349,10 +353,9 @@
             android:background="#FF0000"
             android:onClick="callConfirmOrderScreen"
             android:text="Próximo"
-            android:textSize="20sp"
-            android:textColor="#FFFFFF" />
+            android:textColor="#FFFFFF"
+            android:textSize="20sp" />
     </LinearLayout>
-
 
 
 </RelativeLayout>

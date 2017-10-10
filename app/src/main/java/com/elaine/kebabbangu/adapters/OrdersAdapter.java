@@ -7,8 +7,8 @@ import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.TextView;
 
-import com.elaine.kebabbangu.base.Order;
 import com.elaine.kebabbangu.R;
+import com.elaine.kebabbangu.base.Order;
 
 import java.util.LinkedList;
 
@@ -16,7 +16,7 @@ import java.util.LinkedList;
  * Created by elaine on 01/06/17.
  */
 
-public class OrdersAdapter extends BaseAdapter{
+public class OrdersAdapter extends BaseAdapter {
 
     private final Context context;
     private LinkedList<Order> orders;
@@ -27,13 +27,19 @@ public class OrdersAdapter extends BaseAdapter{
     }
 
     @Override
-    public int getCount() { return this.orders.size(); }
+    public int getCount() {
+        return this.orders.size();
+    }
 
     @Override
-    public Object getItem(int position) { return this.orders.get(position); }
+    public Object getItem(int position) {
+        return this.orders.get(position);
+    }
 
     @Override
-    public long getItemId(int position) { return this.orders.get(position).getId(); }
+    public long getItemId(int position) {
+        return this.orders.get(position).getId();
+    }
 
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
@@ -41,7 +47,7 @@ public class OrdersAdapter extends BaseAdapter{
         LayoutInflater inflater = LayoutInflater.from(context);
 
         View view = convertView;
-        if(view == null){
+        if (view == null) {
             view = inflater.inflate(R.layout.orders_list, parent, false);
         }
 

@@ -21,57 +21,56 @@
         android:layout_height="60dp"
         android:layout_marginTop="610dp"
         android:background="@color/myYellow"
-        android:textSize="30dp"
-        android:textColor="#000000"
+        android:text="Valor Total: R$ 00,00"
         android:textAlignment="center"
-        android:text="Valor Total: R$ 00,00"/>
+        android:textColor="#000000"
+        android:textSize="30dp" />
 
     <EditText
         android:id="@+id/clientText"
         android:layout_width="match_parent"
         android:layout_height="60dp"
-        android:textSize="30sp"
+        android:layout_marginTop="550dp"
+        android:background="#FFCC00"
+        android:hint="Nome do Cliente"
         android:inputType="textCapWords"
         android:paddingLeft="10dp"
-        android:hint="Nome do Cliente"
-        android:layout_marginTop="550dp"
-        android:background="#FFCC00"/>
+        android:textSize="30sp" />
 
     <TextView
         android:layout_width="match_parent"
         android:layout_height="60dp"
         android:layout_marginTop="650dp"
         android:background="@color/myYellow"
-        android:textSize="30dp"
-        android:textColor="#000000"
+        android:text="Forma de Pagamento:"
         android:textAlignment="center"
-        android:text="Forma de Pagamento:"/>
+        android:textColor="#000000"
+        android:textSize="30dp" />
 
     <RadioGroup
         android:layout_width="match_parent"
         android:layout_height="80dp"
-        android:orientation="horizontal"
+        android:layout_marginTop="700dp"
         android:background="@color/myYellow"
-        android:layout_marginTop="700dp">
+        android:orientation="horizontal">
 
         <RadioButton
             android:id="@+id/radioCash"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:layout_marginRight="10dp"
             android:layout_marginLeft="20dp"
+            android:layout_marginRight="10dp"
+            android:layout_weight="1"
             android:text="Dinheiro"
-            android:textSize="20sp"
-            />
+            android:textSize="20sp" />
 
         <RadioButton
             android:id="@+id/radioDebit"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
             android:layout_marginLeft="10dp"
             android:layout_marginRight="10dp"
+            android:layout_weight="1"
             android:text="Débito"
             android:textSize="20sp" />
 
@@ -79,8 +78,8 @@
             android:id="@+id/radioCredit"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
             android:layout_marginLeft="10dp"
+            android:layout_weight="1"
             android:text="Crédito"
             android:textSize="20sp" />
 
@@ -90,12 +89,23 @@
         android:id="@+id/checkPaid"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="740dp"
         android:layout_marginLeft="250dp"
-        android:textSize="20dp"
+        android:layout_marginTop="740dp"
+        android:text="Pagamento Realizado"
         android:textColor="#000000"
-        android:text="Pagamento Realizado" />
+        android:textSize="20dp" />
 
+    <Button
+        android:id="@+id/buttonOrder"
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:layout_gravity="center"
+        android:layout_marginTop="850dp"
+        android:background="#FF0000"
+        android:onClick="callCreateOrder"
+        android:text="Confirmar Pedido"
+        android:textColor="#FFFFFF"
+        android:textSize="20sp" />
 
 
 </RelativeLayout>

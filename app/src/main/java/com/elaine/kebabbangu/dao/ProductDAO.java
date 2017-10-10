@@ -15,7 +15,7 @@ import java.util.LinkedList;
  * Created by elaine on 02/06/17.
  */
 
-public class ProductDAO extends SQLiteOpenHelper{
+public class ProductDAO extends SQLiteOpenHelper {
 
     public ProductDAO(Context context) {
         super(context, "KebabDB", null, 1);
@@ -25,20 +25,19 @@ public class ProductDAO extends SQLiteOpenHelper{
     public void onCreate(SQLiteDatabase db) {
         String sqlCreateTableOrders =
                 "CREATE TABLE Orders (" +
-                        "OrderID INTEGER PRIMARY KEY,"+
-                        "OrderNumber INTEGER NOT NULL," +
-                        "OrderClientName TEXT NOT NULL,"+
+                        "OrderID INTEGER PRIMARY KEY," +
+                        "OrderClientName TEXT NOT NULL," +
                         "IsPaid TEXT NOT NULL," +
-                        "OrderPaymentMethod TEXT,"+
-                        "OrderPrice DOUBLE NOT NULL,"+
+                        "OrderPaymentMethod TEXT," +
+                        "OrderPrice DOUBLE NOT NULL," +
                         "OrderDate TEXT NOT NULL)";
 
         db.execSQL(sqlCreateTableOrders);
 
         String sqlCreateTableProducts =
                 "CREATE TABLE Products (" +
-                        "ProductID INTEGER PRIMARY KEY,"+
-                        "ProductName TEXT NOT NULL,"+
+                        "ProductID INTEGER PRIMARY KEY," +
+                        "ProductName TEXT NOT NULL," +
                         "ProductPrice DOUBLE NOT NULL," +
                         "HasSauce TEXT NOT NULL," +
                         "HasSalad TEXT NOT NULL," +
@@ -49,19 +48,31 @@ public class ProductDAO extends SQLiteOpenHelper{
 
         String sqlCreateTableRegister =
                 "CREATE TABLE Registers (" +
-                        "RegisterID INTEGER PRIMARY KEY,"+
-                        "RegisterStarting DOUBLE NOT NULL,"+
-                        "RegisterTotal DOUBLE NOT NULL,"+
-                        "RegisterCash DOUBLE NOT NULL,"+
-                        "RegisterDebit DOUBLE NOT NULL,"+
-                        "RegisterCredit DOUBLE NOT NULL,"+
+                        "RegisterID INTEGER PRIMARY KEY," +
+                        "RegisterStarting DOUBLE NOT NULL," +
+                        "RegisterTotal DOUBLE NOT NULL," +
+                        "RegisterCash DOUBLE NOT NULL," +
+                        "RegisterDebit DOUBLE NOT NULL," +
+                        "RegisterCredit DOUBLE NOT NULL," +
                         "RegisterDate TEXT NOT NULL)";
 
         db.execSQL(sqlCreateTableRegister);
+
+        String sqlCreateTableOrderProduct =
+                "CREATE TABLE OrderProduct (" +
+                        "OrderID int NOT NULL," +
+                        "ProductID int NOT NULL," +
+                        "ProductDescription TEXT NOT NULL," +
+                        "FOREIGN KEY (OrderID) REFERENCES Orders(OrderID)," +
+                        "FOREIGN KEY (ProductID) REFERENCES Products(ProductID))";
+
+
+        db.execSQL(sqlCreateTableOrderProduct);
     }
 
     @Override
-    public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {}
+    public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
+    }
 
     public void create(Product product) {
         ContentValues productValues = getContentValues(product);
@@ -106,7 +117,7 @@ public class ProductDAO extends SQLiteOpenHelper{
         Cursor cursorReadProducts = database.rawQuery(sqlReadProducts, null);
 
         LinkedList<Product> products = new LinkedList<Product>();
-        while (cursorReadProducts.moveToNext()){
+        while (cursorReadProducts.moveToNext()) {
 
             Product product = new Product();
             product.setId(cursorReadProducts.getInt(
@@ -139,7 +150,7 @@ public class ProductDAO extends SQLiteOpenHelper{
         Cursor cursorReadProducts = database.rawQuery(sqlReadProducts, null);
 
         LinkedList<Product> products = new LinkedList<Product>();
-        while (cursorReadProducts.moveToNext()){
+        while (cursorReadProducts.moveToNext()) {
             Product product = new Product();
 
             product.setId(cursorReadProducts.getInt(
@@ -157,7 +168,7 @@ public class ProductDAO extends SQLiteOpenHelper{
             product.setOnMenu(cursorReadProducts.getString(
                     cursorReadProducts.getColumnIndex("OnMenu")).equals("1"));
 
-            if(product.isOnMenu())
+            if (product.isOnMenu())
                 products.add(product);
         }
 

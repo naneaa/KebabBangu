@@ -1,7 +1,5 @@
 package com.elaine.kebabbangu.base;
 
-import com.elaine.kebabbangu.base.Product;
-
 import java.util.LinkedList;
 
 /**

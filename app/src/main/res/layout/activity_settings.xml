@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/fundo"
+    android:orientation="vertical"
     tools:context="com.elaine.kebabbangu.activities.SettingsActivity">
 
     <Button
@@ -12,42 +12,42 @@
         android:layout_width="match_parent"
         android:layout_height="100dp"
         android:layout_marginTop="20dp"
-        android:text="Novo Produto"
         android:background="#FF0000"
+        android:onClick="callNewProductScreen"
+        android:text="Novo Produto"
         android:textColor="#FFFFFF"
-        android:textSize="20sp"
-        android:onClick="callNewProductScreen"/>
+        android:textSize="20sp" />
 
     <Button
         android:id="@+id/button_menu"
         android:layout_width="match_parent"
         android:layout_height="100dp"
         android:layout_marginTop="20dp"
-        android:text="Cardápio"
         android:background="#FF0000"
+        android:onClick="callMenuScreen"
+        android:text="Cardápio"
         android:textColor="#FFFFFF"
-        android:textSize="20sp"
-        android:onClick="callMenuScreen"/>
+        android:textSize="20sp" />
 
     <Button
         android:id="@+id/button_all_products"
         android:layout_width="match_parent"
         android:layout_height="100dp"
         android:layout_marginTop="20dp"
-        android:text="Todos os Produtos"
         android:background="#FF0000"
+        android:onClick="callAllProductsScreen"
+        android:text="Todos os Produtos"
         android:textColor="#FFFFFF"
-        android:textSize="20sp"
-        android:onClick="callAllProductsScreen"/>
+        android:textSize="20sp" />
 
     <Button
         android:id="@+id/stockButton"
         android:layout_width="match_parent"
         android:layout_height="100dp"
         android:layout_marginTop="20dp"
-        android:text="@string/stockButton"
         android:background="#FF0000"
+        android:onClick="callStockScreen"
+        android:text="@string/stockButton"
         android:textColor="#FFFFFF"
-        android:textSize="20sp"
-        android:onClick="callStockScreen"/>
+        android:textSize="20sp" />
 </LinearLayout>

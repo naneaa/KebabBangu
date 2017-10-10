@@ -7,15 +7,15 @@ import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.TextView;
 
-import com.elaine.kebabbangu.base.Product;
 import com.elaine.kebabbangu.R;
+import com.elaine.kebabbangu.base.Product;
 import com.elaine.kebabbangu.base.Stock;
 
 /**
  * Created by Elaine on 6/2/2017.
  */
 
-public class StockAdapter extends BaseAdapter{
+public class StockAdapter extends BaseAdapter {
 
     private final Context context;
     private Stock stock;
@@ -26,13 +26,19 @@ public class StockAdapter extends BaseAdapter{
     }
 
     @Override
-    public int getCount() { return this.stock.getProducts().size(); }
+    public int getCount() {
+        return this.stock.getProducts().size();
+    }
 
     @Override
-    public Object getItem(int position) { return this.stock.getProducts().get(position); }
+    public Object getItem(int position) {
+        return this.stock.getProducts().get(position);
+    }
 
     @Override
-    public long getItemId(int position) { return 0;}//this.stock.getProducts().get(position).getId(); }
+    public long getItemId(int position) {
+        return 0;
+    }//this.stock.getProducts().get(position).getId(); }
 
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
@@ -40,7 +46,7 @@ public class StockAdapter extends BaseAdapter{
         LayoutInflater inflater = LayoutInflater.from(context);
 
         View view = convertView;
-        if(view == null){
+        if (view == null) {
             view = inflater.inflate(R.layout.orders_list, parent, false);
         }
 

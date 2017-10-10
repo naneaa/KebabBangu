@@ -1,69 +1,68 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="horizontal"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="56dp"
-    android:background="#FFCC00">
+    android:background="#FFCC00"
+    android:orientation="horizontal">
 
     <TextView
         android:id="@+id/product_quantity"
         android:layout_width="wrap_content"
         android:layout_height="match_parent"
         android:layout_weight="1"
-        android:textAlignment="center"
         android:gravity="center"
         android:text="00"
-        android:textSize="20sp"/>
+        android:textAlignment="center"
+        android:textSize="20sp" />
 
     <TextView
         android:id="@+id/product_name"
         android:layout_width="wrap_content"
         android:layout_height="match_parent"
         android:layout_weight="3"
-        android:textAlignment="center"
         android:gravity="center"
         android:text="Product Name"
-        android:textSize="20sp"/>
+        android:textAlignment="center"
+        android:textSize="20sp" />
 
     <TextView
         android:id="@+id/product_value"
         android:layout_width="wrap_content"
         android:layout_height="match_parent"
         android:layout_weight="1"
-        android:textAlignment="center"
         android:gravity="center"
         android:text="R$ 00.00"
-        android:textSize="20sp"/>
+        android:textAlignment="center"
+        android:textSize="20sp" />
 
     <TextView
         android:id="@+id/product_sauce"
         android:layout_width="wrap_content"
         android:layout_height="match_parent"
         android:layout_weight="1"
-        android:textAlignment="center"
         android:gravity="center"
         android:text="Sim"
-        android:textSize="20sp"/>
+        android:textAlignment="center"
+        android:textSize="20sp" />
 
     <TextView
         android:id="@+id/product_salad"
         android:layout_width="wrap_content"
         android:layout_height="match_parent"
         android:layout_weight="1"
-        android:textAlignment="center"
         android:gravity="center"
         android:text="Sim"
-        android:textSize="20sp"/>
+        android:textAlignment="center"
+        android:textSize="20sp" />
 
     <TextView
         android:id="@+id/product_cheese"
         android:layout_width="wrap_content"
         android:layout_height="match_parent"
         android:layout_weight="1"
-        android:textAlignment="center"
         android:gravity="center"
         android:text="Sim"
-        android:textSize="20sp"/>
+        android:textAlignment="center"
+        android:textSize="20sp" />
 
 </LinearLayout>

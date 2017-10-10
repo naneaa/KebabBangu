@@ -1,16 +1,16 @@
 package com.elaine.kebabbangu.activities;
 
 import android.content.Intent;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.Spinner;
 
-import com.elaine.kebabbangu.base.Order;
 import com.elaine.kebabbangu.R;
+import com.elaine.kebabbangu.base.Order;
 import com.elaine.kebabbangu.base.Product;
 import com.elaine.kebabbangu.dao.ProductDAO;
 
@@ -24,9 +24,9 @@ public class NewOrderActivity extends AppCompatActivity {
     private Order order;
     private Spinner spinner;
     private CheckBox checkLettuce, checkTomato, checkOnion, checkPicles, checkOlives, checkRaisins,
-                checkCabbage;
+            checkCabbage;
     private CheckBox checkHotSauce, checkMangoSauce, checkTahineSauce, checkHoneySauce,
-                checkBarbecueSauce, checkChimichurriSauce, checkGarlicSauce, checkHoneyMustardSauce;
+            checkBarbecueSauce, checkChimichurriSauce, checkGarlicSauce, checkHoneyMustardSauce;
     private CheckBox checkCheddar, checkCatupiry;
     private EditText textObs;
 
@@ -78,61 +78,61 @@ public class NewOrderActivity extends AppCompatActivity {
         productDAO.close();
 
         LinkedList<String> nameList = new LinkedList<>();
-        for(Product c : productsList)
+        for (Product c : productsList)
             nameList.add(c.getName());
 
         ArrayAdapter<String> dataAdapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, nameList);
         spinner.setAdapter(dataAdapter);
     }
 
-    public void callAddProductToOrder(View view){
+    public void callAddProductToOrder(View view) {
         ProductDAO productDAO = new ProductDAO(NewOrderActivity.this);
         LinkedList<Product> productsList = productDAO.readMenu();
         productDAO.close();
 
-        Product selectedProduct = productsList.get((int)spinner.getSelectedItemId());
+        Product selectedProduct = productsList.get((int) spinner.getSelectedItemId());
         String productDescription = "";
 
-        if(selectedProduct.hasSalad()){
-            if(checkLettuce.isChecked())
+        if (selectedProduct.hasSalad()) {
+            if (checkLettuce.isChecked())
                 productDescription += "Alface. ";
-            if(checkTomato.isChecked())
+            if (checkTomato.isChecked())
                 productDescription += "Tomate. ";
-            if(checkOnion.isChecked())
+            if (checkOnion.isChecked())
                 productDescription += "Cebola. ";
-            if(checkPicles.isChecked())
+            if (checkPicles.isChecked())
                 productDescription += "Picles. ";
-            if(checkOlives.isChecked())
+            if (checkOlives.isChecked())
                 productDescription += "Azeitona. ";
-            if(checkRaisins.isChecked())
+            if (checkRaisins.isChecked())
                 productDescription += "Passas. ";
-            if(checkCabbage.isChecked())
+            if (checkCabbage.isChecked())
                 productDescription += "Repolho. ";
         }
 
-        if(selectedProduct.hasSauce()){
-            if(checkHotSauce.isChecked())
+        if (selectedProduct.hasSauce()) {
+            if (checkHotSauce.isChecked())
                 productDescription += "Picante. ";
-            if(checkMangoSauce.isChecked())
+            if (checkMangoSauce.isChecked())
                 productDescription += "Manga. ";
-            if(checkTahineSauce.isChecked())
+            if (checkTahineSauce.isChecked())
                 productDescription += "Tahine. ";
-            if(checkHoneySauce.isChecked())
+            if (checkHoneySauce.isChecked())
                 productDescription += "Mel. ";
-            if(checkBarbecueSauce.isChecked())
+            if (checkBarbecueSauce.isChecked())
                 productDescription += "Barbecue. ";
-            if(checkChimichurriSauce.isChecked())
+            if (checkChimichurriSauce.isChecked())
                 productDescription += "ChimiChurri. ";
-            if(checkGarlicSauce.isChecked())
+            if (checkGarlicSauce.isChecked())
                 productDescription += "Pasta de Alho. ";
-            if(checkHoneyMustardSauce.isChecked())
+            if (checkHoneyMustardSauce.isChecked())
                 productDescription += "Mostarda com Mel. ";
         }
 
-        if(selectedProduct.hasCheese()){
-            if(checkCheddar.isChecked())
+        if (selectedProduct.hasCheese()) {
+            if (checkCheddar.isChecked())
                 productDescription += "Cheddar. ";
-            if(checkCatupiry.isChecked())
+            if (checkCatupiry.isChecked())
                 productDescription += "Catupiry. ";
         }
 
@@ -143,7 +143,7 @@ public class NewOrderActivity extends AppCompatActivity {
         callClearOptions(view);
     }
 
-    public void callClearOptions(View view){
+    public void callClearOptions(View view) {
         checkLettuce.setChecked(false);
         checkTomato.setChecked(false);
         checkOnion.setChecked(false);
@@ -167,10 +167,11 @@ public class NewOrderActivity extends AppCompatActivity {
         textObs.setText("");
     }
 
-    public void callConfirmOrderScreen(View view){
+    public void callConfirmOrderScreen(View view) {
         Intent intent = new Intent(NewOrderActivity.this, ConfirmOrderActivity.class);
         intent.putExtra("order", order);
         startActivity(intent);
+        finish();
     }
 
 }

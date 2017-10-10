@@ -17,12 +17,13 @@ public class StockDAO extends SQLiteOpenHelper {
     public void onCreate(SQLiteDatabase db) {
         String sqlCreateTableStock =
                 "CREATE TABLE Stock (" +
-                        "ProductID int FOREIGN KEY REFERENCES Products(ProductID),"+
+                        "ProductID int FOREIGN KEY REFERENCES Products(ProductID)," +
                         "ProductQuantity INTEGER NOT NULL)";
 
         db.execSQL(sqlCreateTableStock);
     }
 
     @Override
-    public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {}
+    public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
+    }
 }

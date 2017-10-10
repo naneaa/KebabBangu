@@ -27,13 +27,19 @@ public class ProductAdapter extends BaseAdapter {
     }
 
     @Override
-    public int getCount() { return this.products.size(); }
+    public int getCount() {
+        return this.products.size();
+    }
 
     @Override
-    public Object getItem(int position) { return this.products.get(position); }
+    public Object getItem(int position) {
+        return this.products.get(position);
+    }
 
     @Override
-    public long getItemId(int position) { return this.products.get(position).getId(); }
+    public long getItemId(int position) {
+        return this.products.get(position).getId();
+    }
 
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
@@ -41,7 +47,7 @@ public class ProductAdapter extends BaseAdapter {
         LayoutInflater inflater = LayoutInflater.from(context);
 
         View view = convertView;
-        if(view == null){
+        if (view == null) {
             view = inflater.inflate(R.layout.product_list, parent, false);
         }
 

@@ -1,8 +1,8 @@
 package com.elaine.kebabbangu.activities;
 
 import android.content.Intent;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 
 import com.elaine.kebabbangu.R;
@@ -15,17 +15,17 @@ public class SettingsActivity extends AppCompatActivity {
         setContentView(R.layout.activity_settings);
     }
 
-    public void callNewProductScreen(View view){
+    public void callNewProductScreen(View view) {
         Intent intent = new Intent(SettingsActivity.this, NewProductActivity.class);
         startActivity(intent);
     }
 
-    public void callMenuScreen(View view){
+    public void callMenuScreen(View view) {
         Intent intent = new Intent(SettingsActivity.this, MenuActivity.class);
         startActivity(intent);
     }
 
-    public void callAllProductsScreen(View view){
+    public void callAllProductsScreen(View view) {
         Intent intent = new Intent(SettingsActivity.this, AllProductsActivity.class);
         startActivity(intent);
     }

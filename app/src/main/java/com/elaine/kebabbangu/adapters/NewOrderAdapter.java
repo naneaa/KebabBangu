@@ -7,15 +7,14 @@ import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.TextView;
 
-import com.elaine.kebabbangu.base.Order;
-import com.elaine.kebabbangu.base.Product;
 import com.elaine.kebabbangu.R;
+import com.elaine.kebabbangu.base.Order;
 
 /**
  * Created by elaine on 02/06/17.
  */
 
-public class NewOrderAdapter extends BaseAdapter{
+public class NewOrderAdapter extends BaseAdapter {
     private final Context context;
     private Order order;
 
@@ -25,20 +24,26 @@ public class NewOrderAdapter extends BaseAdapter{
     }
 
     @Override
-    public int getCount() { return this.order.getProducts().size(); }
+    public int getCount() {
+        return this.order.getProducts().size();
+    }
 
     @Override
-    public Object getItem(int position) { return this.order.getProducts().get(position); }
+    public Object getItem(int position) {
+        return this.order.getProducts().get(position);
+    }
 
     @Override
-    public long getItemId(int position) { return this.order.getProducts().get(position).getId(); }
+    public long getItemId(int position) {
+        return this.order.getProducts().get(position).getId();
+    }
 
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
         LayoutInflater inflater = LayoutInflater.from(context);
 
         View view = convertView;
-        if(view == null){
+        if (view == null) {
             view = inflater.inflate(R.layout.product_order_list, parent, false);
         }
 

@@ -1,8 +1,8 @@
 package com.elaine.kebabbangu.activities;
 
 import android.content.Intent;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.CheckBox;
 import android.widget.EditText;
@@ -45,7 +45,7 @@ public class NewProductActivity extends AppCompatActivity {
         }
     }
 
-    public void callCreateProduct(View view){
+    public void callCreateProduct(View view) {
         Product product;
         try {
             ProductDAO productDAO = new ProductDAO(NewProductActivity.this);

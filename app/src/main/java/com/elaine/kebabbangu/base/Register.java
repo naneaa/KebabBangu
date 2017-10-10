@@ -6,7 +6,7 @@ import java.io.Serializable;
  * Created by Elaine on 6/3/2017.
  */
 
-public class Register  implements Serializable{
+public class Register implements Serializable {
     private Integer id;
     private double startingValue;
     private double cashValue;
@@ -15,7 +15,8 @@ public class Register  implements Serializable{
     private double totalValue;
     private String date;
 
-    public Register(){}
+    public Register() {
+    }
 
     public Integer getId() {
         return id;

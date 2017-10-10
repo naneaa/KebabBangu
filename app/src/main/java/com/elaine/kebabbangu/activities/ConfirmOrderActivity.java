@@ -1,22 +1,27 @@
 package com.elaine.kebabbangu.activities;
 
+import android.content.Context;
 import android.content.Intent;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.print.PrintManager;
+import android.support.v7.app.AppCompatActivity;
 import android.view.ContextMenu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
+import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.ListView;
+import android.widget.RadioButton;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.elaine.kebabbangu.R;
 import com.elaine.kebabbangu.adapters.NewOrderAdapter;
-import com.elaine.kebabbangu.adapters.OrdersAdapter;
 import com.elaine.kebabbangu.base.Order;
 import com.elaine.kebabbangu.base.Product;
+import com.elaine.kebabbangu.dao.OrderDAO;
+import com.elaine.kebabbangu.dao.OrderProductDAO;
 
 import java.text.DecimalFormat;
 
@@ -25,6 +30,9 @@ public class ConfirmOrderActivity extends AppCompatActivity {
     private Order order;
     private ListView list;
     private TextView totalPrice;
+    private EditText clientText;
+    private RadioButton radioCash, radioDebit, radioCredit;
+    private CheckBox isPaid;
 
     @Override
     protected void onResume() {
@@ -46,6 +54,14 @@ public class ConfirmOrderActivity extends AppCompatActivity {
 
         list = (ListView) findViewById(R.id.orderList);
         registerForContextMenu(list);
+
+        clientText = (EditText) findViewById(R.id.clientText);
+        radioCash = (RadioButton) findViewById(R.id.radioCash);
+        radioCash.toggle();
+        radioDebit = (RadioButton) findViewById(R.id.radioDebit);
+        radioCredit = (RadioButton) findViewById(R.id.radioCredit);
+
+        isPaid = (CheckBox) findViewById(R.id.checkPaid);
     }
 
     private void buildMenuList() {
@@ -55,12 +71,10 @@ public class ConfirmOrderActivity extends AppCompatActivity {
 
     @Override
     public void onCreateContextMenu(ContextMenu menu, View v,
-        final ContextMenu.ContextMenuInfo menuInfo) {
-            MenuItem editMenuItem = menu.add("Editar");
-            MenuItem deleteMenuItem = menu.add("Remover");
+                                    final ContextMenu.ContextMenuInfo menuInfo) {
+        MenuItem deleteMenuItem = menu.add("Remover");
 
-            buildEdit((AdapterView.AdapterContextMenuInfo) menuInfo, editMenuItem);
-            buildDelete((AdapterView.AdapterContextMenuInfo) menuInfo, deleteMenuItem);
+        buildDelete((AdapterView.AdapterContextMenuInfo) menuInfo, deleteMenuItem);
     }
 
 
@@ -81,22 +95,49 @@ public class ConfirmOrderActivity extends AppCompatActivity {
         });
     }
 
-    private void buildEdit(final AdapterView.AdapterContextMenuInfo menuInfo, MenuItem editMenuItem) {
-        editMenuItem.setOnMenuItemClickListener(new MenuItem.OnMenuItemClickListener() {
-            @Override
-            public boolean onMenuItemClick(MenuItem item) {
-                AdapterView.AdapterContextMenuInfo adapterMenuInfo = menuInfo;
-                Product product = (Product) list.getItemAtPosition(adapterMenuInfo.position);
+    public void callCreateOrder(View view) {
+        try {
+            OrderDAO orderDAO = new OrderDAO(ConfirmOrderActivity.this);
+            buildOrderForInsert();
 
-                //TODO Edit method
+            //order.printOrder();
+            long row = orderDAO.create(order);
+            int orderID = orderDAO.getOrderByRow(row);
+            order.setId(orderID);
 
-                //Intent intentNewProduct = new Intent(ConfirmOrderActivity.this, NewOrderActivity.class);
-                //intentNewProduct.putExtra("product", product);
-                //startActivity(intentNewProduct);
+            //System.out.println("Linha: " + row + " OrderID: " + orderID);
+            OrderProductDAO orderProductDAO = new OrderProductDAO(ConfirmOrderActivity.this);
+            orderProductDAO.create(order);
 
-                return false;
-            }
-        });
+            orderProductDAO.close();
+            orderDAO.close();
+            Toast.makeText(ConfirmOrderActivity.this, "Pedido Realizado!",
+                    Toast.LENGTH_SHORT).show();
+            finish();
+        } catch (Exception e) {
+            Toast.makeText(ConfirmOrderActivity.this, "Erro ao criar pedido. \n" + e.getMessage(),
+                    Toast.LENGTH_SHORT).show();
+        }
+    }
+
+    private void buildOrderForInsert() throws Exception {
+        if (clientText.getText().toString().equals("")) {
+            throw new Exception("Campo 'nome' obrigatório!");
+        }
+
+        String clientName = clientText.getText().toString();
+        order.setClientName(clientName);
+
+        order.setPaid(isPaid.isChecked());
+
+        if (radioCash.isChecked())
+            order.setPaymentMethod("Cash");
+        else if (radioDebit.isChecked())
+            order.setPaymentMethod("Debit");
+        else if (radioCredit.isChecked())
+            order.setPaymentMethod("Credit");
+
+        System.out.println(order.toString());
     }
 }
 

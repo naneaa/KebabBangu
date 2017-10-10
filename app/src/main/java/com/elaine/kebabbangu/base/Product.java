@@ -6,7 +6,7 @@ import java.io.Serializable;
  * Created by Elaine on 5/28/2017.
  */
 
-public class Product implements Serializable{
+public class Product implements Serializable {
     private Integer id;
     private String name;
     private double price;
@@ -15,12 +15,13 @@ public class Product implements Serializable{
     private boolean hasCheese;
     private boolean onMenu;
 
-    public Product(String name, double price){
+    public Product(String name, double price) {
         this.name = name;
         this.price = price;
     }
 
-    public Product(){}
+    public Product() {
+    }
 
     public String getName() {
         return name;
@@ -79,7 +80,7 @@ public class Product implements Serializable{
         this.id = id;
     }
 
-    public String toString(){
+    public String toString() {
         return "Produto: " + name + " Preco: " + price;
     }
 

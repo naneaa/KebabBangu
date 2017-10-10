@@ -1,9 +1,9 @@
 package com.elaine.kebabbangu.activities;
 
 import android.content.DialogInterface;
+import android.os.Bundle;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 import android.text.InputType;
 import android.view.View;
 import android.widget.EditText;
@@ -21,7 +21,7 @@ import java.util.Date;
 
 public class RegisterActivity extends AppCompatActivity {
 
-       TextView totalText, cashText, debitText, creditText;
+    TextView totalText, cashText, debitText, creditText;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,7 +36,7 @@ public class RegisterActivity extends AppCompatActivity {
         RegisterDAO registerDAO = new RegisterDAO(RegisterActivity.this);
         Register register = registerDAO.getTodaysRegister();
 
-        if(register != null) {
+        if (register != null) {
             DecimalFormat df = new DecimalFormat("0.00");
 
             totalText.setText("Em caixa: R$ " + df.format(register.getTotal()));
@@ -48,7 +48,7 @@ public class RegisterActivity extends AppCompatActivity {
 
     }
 
-    public void startRegister(View view){
+    public void startRegister(View view) {
         final EditText input = new EditText(RegisterActivity.this);
         input.setInputType(InputType.TYPE_CLASS_NUMBER | InputType.TYPE_NUMBER_FLAG_DECIMAL);
 

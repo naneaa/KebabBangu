@@ -1,16 +1,14 @@
 package com.elaine.kebabbangu.activities;
 
-import android.content.Context;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.ListView;
 import android.widget.Toast;
 
-import com.elaine.kebabbangu.base.Order;
-import com.elaine.kebabbangu.adapters.OrdersAdapter;
-import com.elaine.kebabbangu.base.Product;
 import com.elaine.kebabbangu.R;
+import com.elaine.kebabbangu.adapters.OrdersAdapter;
+import com.elaine.kebabbangu.base.Order;
 import com.elaine.kebabbangu.dao.OrderDAO;
 
 import java.util.LinkedList;
@@ -33,7 +31,7 @@ public class OrdersActivity extends AppCompatActivity {
         list = (ListView) findViewById(R.id.lista_pedidos);
     }
 
-    private void buildOrdersList(){
+    private void buildOrdersList() {
         OrderDAO orderDAO = new OrderDAO(OrdersActivity.this);
         LinkedList<Order> ordersList = orderDAO.read();
         orderDAO.close();
@@ -42,12 +40,12 @@ public class OrdersActivity extends AppCompatActivity {
         list.setAdapter(orderListViewAdapter);
     }
 
-    public void callEditOrder(View view){
+    public void callEditOrder(View view) {
         Toast toast = Toast.makeText(getApplicationContext(), "Pedido Editado!", Toast.LENGTH_SHORT);
         toast.show();
     }
 
-    public void callCancelOrder(View view){
+    public void callCancelOrder(View view) {
         Toast toast = Toast.makeText(getApplicationContext(), "Pedido Cancelado!", Toast.LENGTH_SHORT);
         toast.show();
     }

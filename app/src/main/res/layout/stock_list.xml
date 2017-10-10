@@ -1,29 +1,28 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:orientation="horizontal"
     android:layout_width="match_parent"
     android:layout_height="56dp"
-    android:background="#FFCC00">
+    android:background="#FFCC00"
+    android:orientation="horizontal">
 
     <TextView
         android:id="@+id/stock_name"
         android:layout_width="wrap_content"
         android:layout_height="match_parent"
         android:layout_weight="3"
-        android:textAlignment="center"
         android:gravity="center"
-        app:layout_behavior="@string/appbar_scrolling_view_behavior"
-        android:text="Product Name" />
+        android:text="Product Name"
+        android:textAlignment="center"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior" />
 
     <TextView
         android:id="@+id/stock_quantity"
         android:layout_width="wrap_content"
         android:layout_height="match_parent"
         android:layout_weight="1"
-        android:textAlignment="center"
         android:gravity="center"
-        android:text="000" />
+        android:text="000"
+        android:textAlignment="center" />
 
 </LinearLayout>

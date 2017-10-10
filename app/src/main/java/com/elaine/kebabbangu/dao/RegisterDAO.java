@@ -27,20 +27,19 @@ public class RegisterDAO extends SQLiteOpenHelper {
     public void onCreate(SQLiteDatabase db) {
         String sqlCreateTableOrders =
                 "CREATE TABLE Orders (" +
-                        "OrderID INTEGER PRIMARY KEY,"+
-                        "OrderNumber INTEGER NOT NULL," +
-                        "OrderClientName TEXT NOT NULL,"+
+                        "OrderID INTEGER PRIMARY KEY," +
+                        "OrderClientName TEXT NOT NULL," +
                         "IsPaid TEXT NOT NULL," +
-                        "OrderPaymentMethod TEXT,"+
-                        "OrderPrice DOUBLE NOT NULL,"+
-                        "OrderDate TEXT NOT NULL UNIQUE)";
+                        "OrderPaymentMethod TEXT," +
+                        "OrderPrice DOUBLE NOT NULL," +
+                        "OrderDate TEXT NOT NULL)";
 
         db.execSQL(sqlCreateTableOrders);
 
         String sqlCreateTableProducts =
                 "CREATE TABLE Products (" +
-                        "ProductID INTEGER PRIMARY KEY,"+
-                        "ProductName TEXT NOT NULL,"+
+                        "ProductID INTEGER PRIMARY KEY," +
+                        "ProductName TEXT NOT NULL," +
                         "ProductPrice DOUBLE NOT NULL," +
                         "HasSauce TEXT NOT NULL," +
                         "HasSalad TEXT NOT NULL," +
@@ -51,19 +50,31 @@ public class RegisterDAO extends SQLiteOpenHelper {
 
         String sqlCreateTableRegister =
                 "CREATE TABLE Registers (" +
-                        "RegisterID INTEGER PRIMARY KEY,"+
-                        "RegisterStarting DOUBLE NOT NULL,"+
-                        "RegisterTotal DOUBLE NOT NULL,"+
-                        "RegisterCash DOUBLE NOT NULL,"+
-                        "RegisterDebit DOUBLE NOT NULL,"+
-                        "RegisterCredit DOUBLE NOT NULL,"+
+                        "RegisterID INTEGER PRIMARY KEY," +
+                        "RegisterStarting DOUBLE NOT NULL," +
+                        "RegisterTotal DOUBLE NOT NULL," +
+                        "RegisterCash DOUBLE NOT NULL," +
+                        "RegisterDebit DOUBLE NOT NULL," +
+                        "RegisterCredit DOUBLE NOT NULL," +
                         "RegisterDate TEXT NOT NULL)";
 
         db.execSQL(sqlCreateTableRegister);
+
+        String sqlCreateTableOrderProduct =
+                "CREATE TABLE OrderProduct (" +
+                        "OrderID int NOT NULL," +
+                        "ProductID int NOT NULL," +
+                        "ProductDescription TEXT NOT NULL," +
+                        "FOREIGN KEY (OrderID) REFERENCES Orders(OrderID)," +
+                        "FOREIGN KEY (ProductID) REFERENCES Products(ProductID))";
+
+
+        db.execSQL(sqlCreateTableOrderProduct);
     }
 
     @Override
-    public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {}
+    public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
+    }
 
     public void create(Register register) throws SQLiteException {
         ContentValues registerValues = getContentValues(register);
@@ -72,7 +83,7 @@ public class RegisterDAO extends SQLiteOpenHelper {
         String sqlSearch = "SELECT * FROM Registers WHERE RegisterDate = '" + register.getDate() + "'";
         Cursor cursorSearch = seachDatabase.rawQuery(sqlSearch, null);
 
-        if(cursorSearch.getCount() > 0)
+        if (cursorSearch.getCount() > 0)
             throw new SQLiteException();
 
         SQLiteDatabase database = getWritableDatabase();
@@ -86,7 +97,7 @@ public class RegisterDAO extends SQLiteOpenHelper {
         database.delete("Registers", "RegisterID = ?", params);
     }
 
-    public void deleteAll(){
+    public void deleteAll() {
         SQLiteDatabase database = getWritableDatabase();
         database.execSQL("DELETE FROM Registers");
     }
@@ -119,7 +130,7 @@ public class RegisterDAO extends SQLiteOpenHelper {
         Cursor cursorReadRegisters = database.rawQuery(sqlReadRegisters, null);
 
         LinkedList<Register> registers = new LinkedList<>();
-        while (cursorReadRegisters.moveToNext()){
+        while (cursorReadRegisters.moveToNext()) {
 
             Register register = new Register();
             register.setId(cursorReadRegisters.getInt(
@@ -134,7 +145,7 @@ public class RegisterDAO extends SQLiteOpenHelper {
         return registers;
     }
 
-    public Register getTodaysRegister(){
+    public Register getTodaysRegister() {
         DateFormat sdf = new SimpleDateFormat("yyyy/MM/dd");
         Date date = new Date();
 
@@ -142,7 +153,7 @@ public class RegisterDAO extends SQLiteOpenHelper {
         String sqlSearch = "SELECT * FROM Registers WHERE RegisterDate = '" + sdf.format(date) + "'";
         Cursor cursorSearch = seachDatabase.rawQuery(sqlSearch, null);
 
-        if(cursorSearch.getCount() == 0)
+        if (cursorSearch.getCount() == 0)
             return null;
 
         cursorSearch.moveToFirst();

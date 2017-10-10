@@ -1,11 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/fundo"
+    android:orientation="vertical"
     tools:context="com.elaine.kebabbangu.activities.NewProductActivity">
 
 
@@ -13,60 +12,60 @@
         android:id="@+id/textName"
         android:layout_width="match_parent"
         android:layout_height="60dp"
-        android:textSize="30sp"
+        android:layout_marginTop="40dp"
+        android:background="#FFCC00"
+        android:hint="Nome"
         android:inputType="textCapWords"
         android:paddingLeft="10dp"
-        android:hint="Nome"
-        android:layout_marginTop="40dp"
-        android:background="#FFCC00"/>
+        android:textSize="30sp" />
 
     <EditText
         android:id="@+id/textPrice"
         android:layout_width="match_parent"
         android:layout_height="60dp"
-        android:textSize="30sp"
-        android:inputType="numberDecimal"
-        android:paddingLeft="10dp"
-        android:hint="Preço"
-
         android:layout_marginTop="20dp"
-        android:background="#FFCC00"/>
+        android:background="#FFCC00"
+        android:hint="Preço"
+        android:inputType="numberDecimal"
+
+        android:paddingLeft="10dp"
+        android:textSize="30sp" />
 
     <CheckBox
         android:id="@+id/checkHasSauce"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
+        android:background="#FFCC00"
         android:text="Possui Molho"
-        android:textSize="20sp"
-        android:background="#FFCC00"/>
+        android:textSize="20sp" />
 
     <CheckBox
         android:id="@+id/checkHasSalad"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
+        android:background="#FFCC00"
         android:text="Possui Salada"
-        android:textSize="20sp"
-        android:background="#FFCC00"/>
+        android:textSize="20sp" />
 
     <CheckBox
         android:id="@+id/checkHasCheese"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
+        android:background="#FFCC00"
         android:text="Possui Queijo"
-        android:textSize="20sp"
-        android:background="#FFCC00"/>
+        android:textSize="20sp" />
 
     <CheckBox
         android:id="@+id/checkOnMenu"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
+        android:background="#FFCC00"
         android:text="Está no Cardápio"
-        android:textSize="20sp"
-        android:background="#FFCC00"/>
+        android:textSize="20sp" />
 
     <Button
         android:id="@+id/button"
@@ -75,9 +74,9 @@
         android:layout_gravity="center"
         android:layout_marginTop="20dp"
         android:background="#FF0000"
-        android:textColor="#FFFFFF"
-        android:textSize="20sp"
         android:onClick="callCreateProduct"
-        android:text="Adicionar" />
+        android:text="Adicionar"
+        android:textColor="#FFFFFF"
+        android:textSize="20sp" />
 
 </LinearLayout>
