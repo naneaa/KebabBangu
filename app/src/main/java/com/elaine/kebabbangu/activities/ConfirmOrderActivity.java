@@ -20,8 +20,10 @@ import com.elaine.kebabbangu.R;
 import com.elaine.kebabbangu.adapters.NewOrderAdapter;
 import com.elaine.kebabbangu.base.Order;
 import com.elaine.kebabbangu.base.Product;
+import com.elaine.kebabbangu.base.Register;
 import com.elaine.kebabbangu.dao.OrderDAO;
 import com.elaine.kebabbangu.dao.OrderProductDAO;
+import com.elaine.kebabbangu.dao.RegisterDAO;
 
 import java.text.DecimalFormat;
 
@@ -30,7 +32,7 @@ public class ConfirmOrderActivity extends AppCompatActivity {
     private Order order;
     private ListView list;
     private TextView totalPrice;
-    private EditText clientText;
+    private EditText clientText, numberText;
     private RadioButton radioCash, radioDebit, radioCredit;
     private CheckBox isPaid;
 
@@ -56,6 +58,7 @@ public class ConfirmOrderActivity extends AppCompatActivity {
         registerForContextMenu(list);
 
         clientText = (EditText) findViewById(R.id.clientText);
+        numberText = (EditText) findViewById(R.id.numberText);
         radioCash = (RadioButton) findViewById(R.id.radioCash);
         radioCash.toggle();
         radioDebit = (RadioButton) findViewById(R.id.radioDebit);
@@ -111,8 +114,28 @@ public class ConfirmOrderActivity extends AppCompatActivity {
 
             orderProductDAO.close();
             orderDAO.close();
+
+            if(order.isPaid()) {
+                RegisterDAO registerDAO = new RegisterDAO(ConfirmOrderActivity.this);
+                Register register = registerDAO.getTodaysRegister();
+                if (radioCash.isChecked()) {
+                    register.setCash(register.getCash() + order.getPrice());
+                } else if (radioDebit.isChecked()) {
+                    register.setDebit(register.getDebit() + order.getPrice());
+                } else if (radioCredit.isChecked()) {
+                    register.setCredit(register.getCredit() + order.getPrice());
+                }
+                register.setTotal(register.getTotal() + order.getPrice());
+                registerDAO.update(register);
+                registerDAO.close();
+            }
+             MainActivity.print(order.toString());
+
             Toast.makeText(ConfirmOrderActivity.this, "Pedido Realizado!",
                     Toast.LENGTH_SHORT).show();
+
+            Intent intent = new Intent(ConfirmOrderActivity.this, MainActivity.class);
+            startActivity(intent);
             finish();
         } catch (Exception e) {
             Toast.makeText(ConfirmOrderActivity.this, "Erro ao criar pedido. \n" + e.getMessage(),
@@ -125,19 +148,25 @@ public class ConfirmOrderActivity extends AppCompatActivity {
             throw new Exception("Campo 'nome' obrigatório!");
         }
 
+        if (clientText.getText().toString().equals("")) {
+            throw new Exception("Campo 'numero' obrigatório!");
+        }
+
         String clientName = clientText.getText().toString();
         order.setClientName(clientName);
 
+        String orderNumber = numberText.getText().toString();
+        order.setNumber(Integer.valueOf(orderNumber));
+
         order.setPaid(isPaid.isChecked());
 
-        if (radioCash.isChecked())
+        if (radioCash.isChecked()) {
             order.setPaymentMethod("Cash");
-        else if (radioDebit.isChecked())
+        } else if (radioDebit.isChecked()) {
             order.setPaymentMethod("Debit");
-        else if (radioCredit.isChecked())
+        } else if (radioCredit.isChecked()) {
             order.setPaymentMethod("Credit");
-
-        System.out.println(order.toString());
+        }
     }
 }
 

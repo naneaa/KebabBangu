@@ -24,6 +24,7 @@ public class OrderProductDAO extends SQLiteOpenHelper {
         String sqlCreateTableOrders =
                 "CREATE TABLE Orders (" +
                         "OrderID INTEGER PRIMARY KEY," +
+                        "OrderNumber INTEGER NOT NULL," +
                         "OrderClientName TEXT NOT NULL," +
                         "IsPaid TEXT NOT NULL," +
                         "OrderPaymentMethod TEXT," +

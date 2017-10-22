@@ -55,7 +55,7 @@ public class OrdersAdapter extends BaseAdapter {
         TextView orderString = (TextView) view.findViewById(R.id.order_string);
         TextView orderValue = (TextView) view.findViewById(R.id.order_value);
 
-        orderNumber.setText(Integer.toString(order.getId()));
+        orderNumber.setText(Integer.toString(order.getNumber()));
         orderString.setText(order.stringList());
         orderValue.setText("R$ " + String.format("%1$.2f", order.getPrice()));
 

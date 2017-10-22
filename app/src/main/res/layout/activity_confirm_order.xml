@@ -18,8 +18,8 @@
     <TextView
         android:id="@+id/textTotal"
         android:layout_width="match_parent"
-        android:layout_height="60dp"
-        android:layout_marginTop="610dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="670dp"
         android:background="@color/myYellow"
         android:text="Valor Total: R$ 00,00"
         android:textAlignment="center"
@@ -29,7 +29,7 @@
     <EditText
         android:id="@+id/clientText"
         android:layout_width="match_parent"
-        android:layout_height="60dp"
+        android:layout_height="50dp"
         android:layout_marginTop="550dp"
         android:background="#FFCC00"
         android:hint="Nome do Cliente"
@@ -37,10 +37,21 @@
         android:paddingLeft="10dp"
         android:textSize="30sp" />
 
+    <EditText
+        android:id="@+id/numberText"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_marginTop="610dp"
+        android:background="#FFCC00"
+        android:hint="Numero do Pedido"
+        android:inputType="textCapWords"
+        android:paddingLeft="10dp"
+        android:textSize="30sp" />
+
     <TextView
         android:layout_width="match_parent"
         android:layout_height="60dp"
-        android:layout_marginTop="650dp"
+        android:layout_marginTop="720dp"
         android:background="@color/myYellow"
         android:text="Forma de Pagamento:"
         android:textAlignment="center"
@@ -50,7 +61,7 @@
     <RadioGroup
         android:layout_width="match_parent"
         android:layout_height="80dp"
-        android:layout_marginTop="700dp"
+        android:layout_marginTop="760dp"
         android:background="@color/myYellow"
         android:orientation="horizontal">
 
@@ -90,7 +101,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginLeft="250dp"
-        android:layout_marginTop="740dp"
+        android:layout_marginTop="800dp"
         android:text="Pagamento Realizado"
         android:textColor="#000000"
         android:textSize="20dp" />

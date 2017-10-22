@@ -27,6 +27,7 @@ public class OrderDAO extends SQLiteOpenHelper {
         String sqlCreateTableOrders =
                 "CREATE TABLE Orders (" +
                         "OrderID INTEGER PRIMARY KEY," +
+                        "OrderNumber INTEGER NOT NULL," +
                         "OrderClientName TEXT NOT NULL," +
                         "IsPaid TEXT NOT NULL," +
                         "OrderPaymentMethod TEXT," +
@@ -86,6 +87,7 @@ public class OrderDAO extends SQLiteOpenHelper {
     private ContentValues getContentValues(Order order) {
         ContentValues orderValues = new ContentValues();
         orderValues.put("OrderClientName", order.getClientName());
+        orderValues.put("OrderNumber", order.getNumber());
         orderValues.put("IsPaid", order.isPaid());
         orderValues.put("OrderPaymentMethod", order.getPaymentMethod());
         orderValues.put("OrderPrice", order.getPrice());
@@ -104,6 +106,8 @@ public class OrderDAO extends SQLiteOpenHelper {
             Order order = new Order();
             order.setId(cursorReadOrders.getInt(
                     cursorReadOrders.getColumnIndex("OrderID")));
+            order.setNumber(cursorReadOrders.getInt(
+                    cursorReadOrders.getColumnIndex("OrderNumber")));
             order.setClientName(cursorReadOrders.getString(
                     cursorReadOrders.getColumnIndex("OrderClientName")));
             order.setPaid(cursorReadOrders.getString(
@@ -122,13 +126,13 @@ public class OrderDAO extends SQLiteOpenHelper {
             LinkedList<String> description = new LinkedList<String>();
             while (cursorReadOrderProducts.moveToNext()) {
                 Product product = new Product();
-                int productID = cursorReadOrders.getInt(
-                        cursorReadOrders.getColumnIndex("ProductID"));
+                int productID = cursorReadOrderProducts.getInt(
+                        cursorReadOrderProducts.getColumnIndex("ProductID"));
 
                 String sqlReadProducts = "SELECT * FROM Products WHERE ProductID = " + productID;
                 Cursor cursorReadProducts = database.rawQuery(sqlReadProducts, null);
 
-                while (cursorReadOrderProducts.moveToNext()) {
+                while (cursorReadProducts.moveToNext()) {
                     product.setId(productID);
                     product.setName(cursorReadProducts.getString(
                             cursorReadProducts.getColumnIndex("ProductName")));
@@ -137,8 +141,8 @@ public class OrderDAO extends SQLiteOpenHelper {
                 }
 
                 products.add(product);
-                description.add(cursorReadOrders.getString(
-                        cursorReadOrders.getColumnIndex("ProductDescription")));
+                description.add(cursorReadOrderProducts.getString(
+                        cursorReadOrderProducts.getColumnIndex("ProductDescription")));
 
                 cursorReadProducts.close();
             }

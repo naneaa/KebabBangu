@@ -11,6 +11,7 @@ public class Order implements Serializable {
     private LinkedList<Product> products;
     private LinkedList<String> descriptions;
     private int id;
+    private int number;
     private double price;
     private boolean isPaid;
     private String paymentMethod;
@@ -95,21 +96,27 @@ public class Order implements Serializable {
     public String toString() {
         String list = "";
         for (int i = 0; i < products.size(); i++) {
-            list += products.get(i).toString() + "\n";
+            list += products.get(i).getName() + ".\n\n" + descriptions.get(i) + "\n\n";
         }
 
-        return "Pedido " + id + "\n" + list + "Valor Total: " + price;
+        return "Pedido " + number + " de " +  clientName + ":\n" +
+                (isPaid ? "Pago." : "Nao pago.") + " " +
+                (paymentMethod == "Cash" ? "Dinheiro.\n" :
+                        (paymentMethod == "Debit" ? "Debito.\n" : "Credito.\n") ) +
+                "\n" + list + "Valor Total: " + price;
     }
 
     public String stringList() {
         String list = "";
         for (int i = 0; i < products.size(); i++) {
-            list += products.get(i).getName() + descriptions.get(i);
-            list += products.size() > 1 ? "\n" : "";
+            list += products.get(i).getName();
+            list += i != products.size() - 1 ? ", " : "";
         }
 
         return list;
     }
+
+
 
     public String getClientName() {
         return clientName;
@@ -119,10 +126,12 @@ public class Order implements Serializable {
         this.clientName = clientName;
     }
 
-    public void printOrder() {
-        System.out.println(stringList());
 
-        System.out.println(clientName + " " + isPaid + " " + paymentMethod + " " + date);
+    public int getNumber() {
+        return number;
     }
 
+    public void setNumber(int number) {
+        this.number = number;
+    }
 }

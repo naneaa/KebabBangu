@@ -8,11 +8,14 @@ import android.widget.ArrayAdapter;
 import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.Spinner;
+import android.widget.Toast;
 
 import com.elaine.kebabbangu.R;
 import com.elaine.kebabbangu.base.Order;
 import com.elaine.kebabbangu.base.Product;
+import com.elaine.kebabbangu.base.Register;
 import com.elaine.kebabbangu.dao.ProductDAO;
+import com.elaine.kebabbangu.dao.RegisterDAO;
 
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
@@ -39,6 +42,15 @@ public class NewOrderActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_new_order);
+
+        RegisterDAO registerDAO = new RegisterDAO(NewOrderActivity.this);
+        Register register = registerDAO.getTodaysRegister();
+
+        if(register == null) {
+            Toast.makeText(NewOrderActivity.this, "Inicie o caixa antes de criar pedidos!",
+                    Toast.LENGTH_LONG).show();
+            finish();
+        }
 
         order = new Order();
         DateFormat sdf = new SimpleDateFormat("yyyy/MM/dd");
@@ -94,6 +106,7 @@ public class NewOrderActivity extends AppCompatActivity {
         String productDescription = "";
 
         if (selectedProduct.hasSalad()) {
+            productDescription += "Salada: ";
             if (checkLettuce.isChecked())
                 productDescription += "Alface. ";
             if (checkTomato.isChecked())
@@ -108,9 +121,11 @@ public class NewOrderActivity extends AppCompatActivity {
                 productDescription += "Passas. ";
             if (checkCabbage.isChecked())
                 productDescription += "Repolho. ";
+            productDescription += "\n\n";
         }
 
         if (selectedProduct.hasSauce()) {
+            productDescription += "Molho: ";
             if (checkHotSauce.isChecked())
                 productDescription += "Picante. ";
             if (checkMangoSauce.isChecked())
@@ -127,19 +142,24 @@ public class NewOrderActivity extends AppCompatActivity {
                 productDescription += "Pasta de Alho. ";
             if (checkHoneyMustardSauce.isChecked())
                 productDescription += "Mostarda com Mel. ";
+            productDescription += "\n\n";
         }
 
         if (selectedProduct.hasCheese()) {
+            productDescription += "Queijo";
             if (checkCheddar.isChecked())
                 productDescription += "Cheddar. ";
             if (checkCatupiry.isChecked())
                 productDescription += "Catupiry. ";
+            productDescription += "\n\n";
         }
 
         productDescription += textObs.getText();
         System.out.println(productDescription);
 
         order.AddItem(selectedProduct, productDescription);
+        Toast.makeText(NewOrderActivity.this, "Produto Adicionado!",
+                Toast.LENGTH_SHORT).show();
         callClearOptions(view);
     }
 
@@ -171,7 +191,6 @@ public class NewOrderActivity extends AppCompatActivity {
         Intent intent = new Intent(NewOrderActivity.this, ConfirmOrderActivity.class);
         intent.putExtra("order", order);
         startActivity(intent);
-        finish();
     }
 
 }
