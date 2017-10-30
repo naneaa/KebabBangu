@@ -53,10 +53,12 @@ public class OrdersAdapter extends BaseAdapter {
 
         TextView orderNumber = (TextView) view.findViewById(R.id.order_number);
         TextView orderString = (TextView) view.findViewById(R.id.order_string);
+        TextView orderPaid = (TextView) view.findViewById(R.id.order_paid);
         TextView orderValue = (TextView) view.findViewById(R.id.order_value);
 
         orderNumber.setText(Integer.toString(order.getNumber()));
         orderString.setText(order.stringList());
+        orderPaid.setText(order.isPaid()? "Sim" : "Não");
         orderValue.setText("R$ " + String.format("%1$.2f", order.getPrice()));
 
         return view;

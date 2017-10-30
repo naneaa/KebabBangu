@@ -1,8 +1,8 @@
 package com.elaine.kebabbangu.activities;
 
 import android.content.Intent;
-import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.os.Bundle;
 import android.view.ContextMenu;
 import android.view.MenuItem;
 import android.view.View;
@@ -11,30 +11,30 @@ import android.widget.ListView;
 import android.widget.Toast;
 
 import com.elaine.kebabbangu.R;
-import com.elaine.kebabbangu.adapters.StockAdapter;
-import com.elaine.kebabbangu.base.Product;
-import com.elaine.kebabbangu.base.StockItem;
-import com.elaine.kebabbangu.dao.ProductDAO;
-import com.elaine.kebabbangu.dao.StockDAO;
+import com.elaine.kebabbangu.adapters.ExpensesAdapter;
+import com.elaine.kebabbangu.base.Expense;
+import com.elaine.kebabbangu.base.Register;
+import com.elaine.kebabbangu.dao.ExpenseDAO;
+import com.elaine.kebabbangu.dao.RegisterDAO;
 
 import java.util.LinkedList;
 
-public class StockActivity extends AppCompatActivity {
+public class ExpensesActivity extends AppCompatActivity {
 
     private ListView list;
 
     @Override
     protected void onResume() {
         super.onResume();
-        buildStockList();
+        buildExpensesList();
     }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_stock);
+        setContentView(R.layout.activity_expenses);
 
-        list = (ListView) findViewById(R.id.list_stock);
+        list = (ListView) findViewById(R.id.expenses_list);
         registerForContextMenu(list);
     }
 
@@ -49,16 +49,12 @@ public class StockActivity extends AppCompatActivity {
         buildDelete((AdapterView.AdapterContextMenuInfo) menuInfo, deleteMenuItem);
     }
 
-    private void buildStockList() {
-        ProductDAO productDAO = new ProductDAO(StockActivity.this);
-        LinkedList<Product> productsList = productDAO.readMenu();
-        productDAO.close();
+    private void buildExpensesList() {
+        ExpenseDAO expenseDAO = new ExpenseDAO(ExpensesActivity.this);
+        LinkedList<Expense> expensesList = expenseDAO.readTodaysExpenses();
+        expenseDAO.close();
 
-        StockDAO stockDAO = new StockDAO(StockActivity.this);
-        LinkedList<StockItem> expensesList = stockDAO.read(productsList);
-        stockDAO.close();
-
-        StockAdapter expenseListViewAdapter = new StockAdapter(this, expensesList);
+        ExpensesAdapter expenseListViewAdapter = new ExpensesAdapter(this, expensesList);
         list.setAdapter(expenseListViewAdapter);
     }
 
@@ -67,15 +63,22 @@ public class StockActivity extends AppCompatActivity {
             @Override
             public boolean onMenuItemClick(MenuItem item) {
                 AdapterView.AdapterContextMenuInfo adapterMenuInfo = menuInfo;
-                StockItem expense = (StockItem) list.getItemAtPosition(adapterMenuInfo.position);
+                Expense expense = (Expense) list.getItemAtPosition(adapterMenuInfo.position);
 
-                StockDAO expenseDAO = new StockDAO(StockActivity.this);
-                expenseDAO.delete(expense.getProduct().getId());
+                ExpenseDAO expenseDAO = new ExpenseDAO(ExpensesActivity.this);
+                expenseDAO.delete(expense.getId());
                 expenseDAO.close();
 
-                buildStockList();
+                RegisterDAO registerDAO = new RegisterDAO(ExpensesActivity.this);
+                Register register = registerDAO.getTodaysRegister();
+                register.setCash(register.getCash() + expense.getValue());
+                register.setTotal(register.getTotal() + expense.getValue());
+                registerDAO.update(register);
+                registerDAO.close();
 
-                Toast.makeText(StockActivity.this, "Item removido do estoque!",
+                buildExpensesList();
+
+                Toast.makeText(ExpensesActivity.this, "Despesa " + expense.getDescription() + " removida!",
                         Toast.LENGTH_SHORT).show();
 
                 return false;
@@ -88,21 +91,20 @@ public class StockActivity extends AppCompatActivity {
             @Override
             public boolean onMenuItemClick(MenuItem item) {
                 AdapterView.AdapterContextMenuInfo adapterMenuInfo = menuInfo;
-                StockItem stockItem = (StockItem) list.getItemAtPosition(adapterMenuInfo.position);
+                Expense expense = (Expense) list.getItemAtPosition(adapterMenuInfo.position);
 
-                Intent intentNewStockItem = new Intent(StockActivity.this, NewStockItemActivity.class);
-                intentNewStockItem.putExtra("stockItem", stockItem);
-                startActivity(intentNewStockItem);
+                Intent intentNewExpense = new Intent(ExpensesActivity.this, NewExpenseActivity.class);
+                intentNewExpense.putExtra("expense", expense);
+                startActivity(intentNewExpense);
 
                 return false;
             }
         });
     }
 
-
-    public void callCreateStockItem(View view) {
-        Intent intent = new Intent(StockActivity.this, NewStockItemActivity.class);
-        startActivity(intent);
+    public void callNewExpenseScreen(View view){
+        Intent intentNewExpense = new Intent(ExpensesActivity.this, NewExpenseActivity.class);
+        startActivity(intentNewExpense);
     }
 
 }

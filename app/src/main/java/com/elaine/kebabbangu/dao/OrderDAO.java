@@ -10,6 +10,9 @@ import android.support.annotation.NonNull;
 import com.elaine.kebabbangu.base.Order;
 import com.elaine.kebabbangu.base.Product;
 
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.LinkedList;
 
 /**
@@ -70,6 +73,23 @@ public class OrderDAO extends SQLiteOpenHelper {
 
 
         db.execSQL(sqlCreateTableOrderProduct);
+
+        String sqlCreateTableExpenses =
+                "CREATE TABLE Expenses (" +
+                        "ExpenseID INTEGER PRIMARY KEY," +
+                        "ExpenseDescription TEXT NOT NULL," +
+                        "ExpenseDate TEXT NOT NULL," +
+                        "ExpenseValue DOUBLE NOT NULL)";
+
+        db.execSQL(sqlCreateTableExpenses);
+
+        String sqlCreateTableStock =
+                "CREATE TABLE Stock (" +
+                        "ProductID int NOT NULL," +
+                        "ProductQuantity INTEGER NOT NULL," +
+                        "FOREIGN KEY (ProductID) REFERENCES Products(ProductID))";
+
+        db.execSQL(sqlCreateTableStock);
     }
 
     @Override
@@ -82,6 +102,23 @@ public class OrderDAO extends SQLiteOpenHelper {
         SQLiteDatabase database = getWritableDatabase();
         return database.insert("Orders", null, orderValues);
     }
+
+    public void delete(int id) {
+        String[] params = {Integer.toString(id)};
+
+        SQLiteDatabase database = getWritableDatabase();
+        database.delete("Orders", "OrderID = ?", params);
+        database.delete("OrderProduct", "OrderID = ?", params);
+    }
+
+    public void update(Order order) {
+        ContentValues productValues = getContentValues(order);
+        String[] params = {Integer.toString(order.getId())};
+
+        SQLiteDatabase database = getWritableDatabase();
+        database.update("Orders", productValues, "OrderID = ?", params);
+    }
+
 
     @NonNull
     private ContentValues getContentValues(Order order) {
@@ -99,6 +136,72 @@ public class OrderDAO extends SQLiteOpenHelper {
     public LinkedList<Order> read() {
         SQLiteDatabase database = getReadableDatabase();
         String sqlReadOrders = "SELECT * FROM Orders";
+        Cursor cursorReadOrders = database.rawQuery(sqlReadOrders, null);
+
+        LinkedList<Order> orders = new LinkedList<Order>();
+        while (cursorReadOrders.moveToNext()) {
+            Order order = new Order();
+            order.setId(cursorReadOrders.getInt(
+                    cursorReadOrders.getColumnIndex("OrderID")));
+            order.setNumber(cursorReadOrders.getInt(
+                    cursorReadOrders.getColumnIndex("OrderNumber")));
+            order.setClientName(cursorReadOrders.getString(
+                    cursorReadOrders.getColumnIndex("OrderClientName")));
+            order.setPaid(cursorReadOrders.getString(
+                    cursorReadOrders.getColumnIndex("IsPaid")).equals("1"));
+            order.setPaymentMethod(cursorReadOrders.getString(
+                    cursorReadOrders.getColumnIndex("OrderPaymentMethod")));
+            order.setPrice(cursorReadOrders.getDouble(
+                    cursorReadOrders.getColumnIndex("OrderPrice")));
+            order.setDate(cursorReadOrders.getString(
+                    cursorReadOrders.getColumnIndex("OrderDate")));
+
+            String sqlReadOrderProducts = "SELECT * FROM OrderProduct WHERE OrderID = " + order.getId();
+            Cursor cursorReadOrderProducts = database.rawQuery(sqlReadOrderProducts, null);
+
+            LinkedList<Product> products = new LinkedList<Product>();
+            LinkedList<String> description = new LinkedList<String>();
+            while (cursorReadOrderProducts.moveToNext()) {
+                Product product = new Product();
+                int productID = cursorReadOrderProducts.getInt(
+                        cursorReadOrderProducts.getColumnIndex("ProductID"));
+
+                String sqlReadProducts = "SELECT * FROM Products WHERE ProductID = " + productID;
+                Cursor cursorReadProducts = database.rawQuery(sqlReadProducts, null);
+
+                while (cursorReadProducts.moveToNext()) {
+                    product.setId(productID);
+                    product.setName(cursorReadProducts.getString(
+                            cursorReadProducts.getColumnIndex("ProductName")));
+                    product.setPrice(cursorReadProducts.getDouble(
+                            cursorReadProducts.getColumnIndex("ProductPrice")));
+                }
+
+                products.add(product);
+                description.add(cursorReadOrderProducts.getString(
+                        cursorReadOrderProducts.getColumnIndex("ProductDescription")));
+
+                cursorReadProducts.close();
+            }
+
+            order.setProducts(products);
+            order.setDescriptions(description);
+            orders.add(order);
+
+            cursorReadOrderProducts.close();
+        }
+
+        cursorReadOrders.close();
+
+        return orders;
+    }
+
+    public LinkedList<Order> readTodaysOrders() {
+        DateFormat sdf = new SimpleDateFormat("yyyy/MM/dd");
+        Date date = new Date();
+
+        SQLiteDatabase database = getReadableDatabase();
+        String sqlReadOrders = "SELECT * FROM Orders WHERE OrderDate = '" + sdf.format(date) + "'";
         Cursor cursorReadOrders = database.rawQuery(sqlReadOrders, null);
 
         LinkedList<Order> orders = new LinkedList<Order>();

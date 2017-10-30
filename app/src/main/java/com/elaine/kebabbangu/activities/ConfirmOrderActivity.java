@@ -89,6 +89,9 @@ public class ConfirmOrderActivity extends AppCompatActivity {
                 Product product = (Product) list.getItemAtPosition(adapterMenuInfo.position);
                 order.removeItem(adapterMenuInfo.position);
 
+                DecimalFormat df = new DecimalFormat("0.00");
+                totalPrice.setText("Valor Total: R$ " + df.format(order.getPrice()));
+
                 buildMenuList();
                 Toast.makeText(ConfirmOrderActivity.this, "Produto " + product.getName() + " removido!",
                         Toast.LENGTH_SHORT).show();
@@ -129,7 +132,8 @@ public class ConfirmOrderActivity extends AppCompatActivity {
                 registerDAO.update(register);
                 registerDAO.close();
             }
-             MainActivity.print(order.toString());
+
+            MainActivity.print(order.toString());
 
             Toast.makeText(ConfirmOrderActivity.this, "Pedido Realizado!",
                     Toast.LENGTH_SHORT).show();

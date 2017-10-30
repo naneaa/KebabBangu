@@ -5,12 +5,23 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/fundo"
-    tools:context="com.elaine.kebabbangu.activities.OrdersActivity">
+    tools:context="com.elaine.kebabbangu.activities.ExpensesActivity">
 
     <ListView
-        android:id="@+id/lista_pedidos"
+        android:id="@+id/expenses_list"
         android:layout_width="match_parent"
         android:layout_height="800dp"
         app:layout_behavior="@string/appbar_scrolling_view_behavior"/>
+
+    <Button
+        android:id="@+id/startRegisterButton"
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:layout_marginTop="820dp"
+        android:background="#FF0000"
+        android:onClick="callNewExpenseScreen"
+        android:text="Adicionar Despesa"
+        android:textColor="#FFFFFF"
+        android:textSize="20sp" />
 
 </RelativeLayout>

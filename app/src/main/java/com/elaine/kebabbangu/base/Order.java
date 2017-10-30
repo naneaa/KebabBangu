@@ -89,6 +89,7 @@ public class Order implements Serializable {
     }
 
     public void removeItem(int position) {
+        price -= products.get(position).getPrice();
         products.remove(position);
         descriptions.remove(position);
     }
@@ -103,7 +104,7 @@ public class Order implements Serializable {
                 (isPaid ? "Pago." : "Nao pago.") + " " +
                 (paymentMethod == "Cash" ? "Dinheiro.\n" :
                         (paymentMethod == "Debit" ? "Debito.\n" : "Credito.\n") ) +
-                "\n" + list + "Valor Total: " + price;
+                "\n" + list + "Valor Total: R$ " + price;
     }
 
     public String stringList() {
@@ -116,8 +117,6 @@ public class Order implements Serializable {
         return list;
     }
 
-
-
     public String getClientName() {
         return clientName;
     }
@@ -125,7 +124,6 @@ public class Order implements Serializable {
     public void setClientName(String clientName) {
         this.clientName = clientName;
     }
-
 
     public int getNumber() {
         return number;

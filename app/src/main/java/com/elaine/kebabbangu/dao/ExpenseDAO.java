@@ -6,21 +6,24 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
-import com.elaine.kebabbangu.base.Product;
-import com.elaine.kebabbangu.base.StockItem;
+import com.elaine.kebabbangu.base.Expense;
 
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.LinkedList;
 
 /**
- * Created by Elaine on 6/3/2017.
+ * Created by Elaine on 10/26/2017.
  */
 
-public class StockDAO extends SQLiteOpenHelper {
+public class ExpenseDAO extends SQLiteOpenHelper{
 
-    public StockDAO(Context context) {
+    public ExpenseDAO(Context context) {
         super(context, "KebabDB", null, 1);
     }
 
+    @Override
     public void onCreate(SQLiteDatabase db) {
         String sqlCreateTableOrders =
                 "CREATE TABLE Orders (" +
@@ -90,62 +93,94 @@ public class StockDAO extends SQLiteOpenHelper {
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
     }
 
-    public long create(StockItem expense) {
-        ContentValues stockValues = getContentValues(expense);
+    public long create(Expense expense) {
+        ContentValues expenseValues = getContentValues(expense);
 
         SQLiteDatabase database = getWritableDatabase();
-        return database.insert("Stock", null, stockValues);
+        return database.insert("Expenses", null, expenseValues);
     }
 
     public void delete(int id) {
         String[] params = {Integer.toString(id)};
 
         SQLiteDatabase database = getWritableDatabase();
-        database.delete("Stock", "ProductID = ?", params);
+        database.delete("Expenses", "ExpenseID = ?", params);
     }
 
-    public void update(StockItem stockItem) {
-        ContentValues stockValues = getContentValues(stockItem);
-        String[] params = {Integer.toString(stockItem.getProduct().getId())};
+    public void update(Expense expense) {
+        ContentValues expenseValues = getContentValues(expense);
+        String[] params = {Integer.toString(expense.getId())};
 
         SQLiteDatabase database = getWritableDatabase();
-        database.update("Stock", stockValues, "ProductID = ?", params);
+        database.update("Expenses", expenseValues, "ExpenseID = ?", params);
     }
 
-    private ContentValues getContentValues(StockItem stockItem) {
-        ContentValues stockValues = new ContentValues();
-        stockValues.put("ProductID", stockItem.getProduct().getId());
-        stockValues.put("ProductQuantity", stockItem.getQuantity());
+    private ContentValues getContentValues(Expense expense) {
+        ContentValues expenseValues = new ContentValues();
+        expenseValues.put("ExpenseDescription", expense.getDescription());
+        expenseValues.put("ExpenseDate", expense.getDate());
+        expenseValues.put("ExpenseValue", expense.getValue());
 
-        return stockValues;
+        return expenseValues;
     }
 
-    public LinkedList<StockItem> read(LinkedList<Product> products) {
+    public LinkedList<Expense> read() {
         SQLiteDatabase database = getReadableDatabase();
         String sqlReadExpenses =
-                "SELECT * FROM Stock";
+                "SELECT * FROM Expenses";
 
-        Cursor cursorReadStock = database.rawQuery(sqlReadExpenses, null);
+        Cursor cursorReadExpenses = database.rawQuery(sqlReadExpenses, null);
 
-        LinkedList<StockItem> stock = new LinkedList<>();
-        while (cursorReadStock.moveToNext()) {
-            StockItem stockItem = new StockItem();
+        LinkedList<Expense> expenses = new LinkedList<>();
+        while (cursorReadExpenses.moveToNext()) {
 
-            int productID = cursorReadStock.getInt(
-                    cursorReadStock.getColumnIndex("ProductID"));
-            for(Product p : products)
-                if(p.getId() == productID)
-                    stockItem.setProduct(p);
-
-            stockItem.setQuantity( cursorReadStock.getInt(
-                    cursorReadStock.getColumnIndex("ProductQuantity")));
-
-            stock.add(stockItem);
+            Expense expense = new Expense();
+            expense.setId(cursorReadExpenses.getInt(
+                    cursorReadExpenses.getColumnIndex("ExpenseID")));
+            expense.setDescription(cursorReadExpenses.getString(
+                    cursorReadExpenses.getColumnIndex("ExpenseDescription")));
+            expense.setDate(cursorReadExpenses.getString(
+                    cursorReadExpenses.getColumnIndex("ExpenseDate")));
+            expense.setValue(cursorReadExpenses.getDouble(
+                    cursorReadExpenses.getColumnIndex("ExpenseValue")));
+            expenses.add(expense);
         }
 
-        cursorReadStock.close();
+        cursorReadExpenses.close();
 
-        return stock;
+        return expenses;
     }
+
+
+    public LinkedList<Expense> readTodaysExpenses() {
+        DateFormat sdf = new SimpleDateFormat("yyyy/MM/dd");
+        Date date = new Date();
+
+        SQLiteDatabase database = getReadableDatabase();
+        String sqlReadExpenses =
+                "SELECT * FROM Expenses WHERE ExpenseDate = '" + sdf.format(date) + "'";
+
+        Cursor cursorReadExpenses = database.rawQuery(sqlReadExpenses, null);
+
+        LinkedList<Expense> expenses = new LinkedList<>();
+        while (cursorReadExpenses.moveToNext()) {
+
+            Expense expense = new Expense();
+            expense.setId(cursorReadExpenses.getInt(
+                    cursorReadExpenses.getColumnIndex("ExpenseID")));
+            expense.setDescription(cursorReadExpenses.getString(
+                    cursorReadExpenses.getColumnIndex("ExpenseDescription")));
+            expense.setDate(cursorReadExpenses.getString(
+                    cursorReadExpenses.getColumnIndex("ExpenseDate")));
+            expense.setValue(cursorReadExpenses.getDouble(
+                    cursorReadExpenses.getColumnIndex("ExpenseValue")));
+            expenses.add(expense);
+        }
+
+        cursorReadExpenses.close();
+
+        return expenses;
+    }
+
 
 }

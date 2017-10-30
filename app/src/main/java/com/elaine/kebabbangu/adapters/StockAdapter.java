@@ -9,7 +9,9 @@ import android.widget.TextView;
 
 import com.elaine.kebabbangu.R;
 import com.elaine.kebabbangu.base.Product;
-import com.elaine.kebabbangu.base.Stock;
+import com.elaine.kebabbangu.base.StockItem;
+
+import java.util.LinkedList;
 
 /**
  * Created by Elaine on 6/2/2017.
@@ -18,31 +20,31 @@ import com.elaine.kebabbangu.base.Stock;
 public class StockAdapter extends BaseAdapter {
 
     private final Context context;
-    private Stock stock;
+    private LinkedList<StockItem> stockItem;
 
-    public StockAdapter(Context context, Stock stock) {
-        this.stock = stock;
+    public StockAdapter(Context context, LinkedList<StockItem> stockItem) {
+        this.stockItem = stockItem;
         this.context = context;
     }
 
     @Override
     public int getCount() {
-        return this.stock.getProducts().size();
+        return this.stockItem.size();
     }
 
     @Override
     public Object getItem(int position) {
-        return this.stock.getProducts().get(position);
+        return this.stockItem.get(position);
     }
 
     @Override
     public long getItemId(int position) {
         return 0;
-    }//this.stock.getProducts().get(position).getId(); }
+    }//this.stockItem.getProducts().get(position).getId(); }
 
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
-        Product product = this.stock.getProducts().get(position);
+        Product product = this.stockItem.get(position).getProduct();
         LayoutInflater inflater = LayoutInflater.from(context);
 
         View view = convertView;
@@ -54,7 +56,7 @@ public class StockAdapter extends BaseAdapter {
         TextView orderValue = (TextView) view.findViewById(R.id.order_value);
 
         orderString.setText(product.getName());
-        orderValue.setText(stock.getQuantity().get(position));
+        orderValue.setText(stockItem.get(position).getQuantity());
 
         return view;
     }

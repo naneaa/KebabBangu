@@ -63,7 +63,7 @@ public class MainActivity extends AppCompatActivity {
         new Thread(new Runnable() {
             public void run() {
                 try {
-                    Socket sock = new Socket("192.168.0.19", 9100);
+                    Socket sock = new Socket("192.168.15.2", 9100);
                     PrintWriter oStream = new PrintWriter(sock.getOutputStream());
 
                     if(sock.isConnected()){

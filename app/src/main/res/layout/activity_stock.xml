@@ -11,7 +11,7 @@
         android:id="@+id/list_stock"
         android:layout_width="match_parent"
         android:layout_height="900dp"
-        app:layout_behavior="@string/appbar_scrolling_view_behavior"></ListView>
+        app:layout_behavior="@string/appbar_scrolling_view_behavior"/>
 
     <Button
         android:id="@+id/button_add_stock"
@@ -22,7 +22,7 @@
         android:layout_below="@+id/list_stock"
         android:layout_marginTop="10dp"
         android:background="#FF0000"
-        android:onClick="callEditOrder"
+        android:onClick="callCreateStockItem"
         android:text="@string/button_add_stock"
         android:textColor="#FFFFFF"
         android:textSize="20sp" />

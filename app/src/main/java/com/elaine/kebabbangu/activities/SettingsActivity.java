@@ -6,6 +6,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 
 import com.elaine.kebabbangu.R;
+import com.elaine.kebabbangu.base.Expense;
 
 public class SettingsActivity extends AppCompatActivity {
 
@@ -30,9 +31,13 @@ public class SettingsActivity extends AppCompatActivity {
         startActivity(intent);
     }
 
-
     public void callStockScreen(View view) {
         Intent intent = new Intent(SettingsActivity.this, StockActivity.class);
+        startActivity(intent);
+    }
+
+    public void callExpenseScreen(View view) {
+        Intent intent = new Intent(SettingsActivity.this, ExpensesActivity.class);
         startActivity(intent);
     }
 }

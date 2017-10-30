@@ -13,7 +13,6 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-
         <activity android:name=".activities.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -29,7 +28,10 @@
         <activity android:name=".activities.SettingsActivity" />
         <activity android:name=".activities.MenuActivity" />
         <activity android:name=".activities.AllProductsActivity" />
-        <activity android:name=".activities.ConfirmOrderActivity"></activity>
+        <activity android:name=".activities.ConfirmOrderActivity" />
+        <activity android:name=".activities.ExpensesActivity" />
+        <activity android:name=".activities.NewExpenseActivity" />
+        <activity android:name=".activities.NewStockItemActivity"></activity>
     </application>
 
 </manifest>

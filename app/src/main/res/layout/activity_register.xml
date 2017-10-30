@@ -78,6 +78,7 @@
         android:layout_below="@+id/startRegisterButton"
         android:layout_marginTop="20dp"
         android:background="#FF0000"
+        android:onClick="closeRegister"
         android:text="@string/button_encerra_caixa"
         android:textColor="#FFFFFF"
         android:textSize="20sp" />

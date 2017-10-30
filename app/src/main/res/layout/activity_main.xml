@@ -58,24 +58,11 @@
         android:orientation="horizontal">
 
         <Button
-            android:id="@+id/stockButton"
-            android:layout_width="match_parent"
-            android:layout_height="100dp"
-            android:layout_marginLeft="20dp"
-            android:layout_marginRight="10dp"
-            android:layout_weight="1"
-            android:background="#FF0000"
-            android:text="Test Printer"
-            android:onClick="testPrinter"
-            android:textColor="#FFFFFF"
-            android:textSize="20sp" />
-
-        <Button
             android:id="@+id/settingsButton"
             style="@style/Widget.AppCompat.Button"
             android:layout_width="match_parent"
             android:layout_height="100dp"
-            android:layout_marginLeft="10dp"
+            android:layout_marginLeft="20dp"
             android:layout_marginRight="20dp"
             android:layout_weight="1"
             android:background="#FF0000"

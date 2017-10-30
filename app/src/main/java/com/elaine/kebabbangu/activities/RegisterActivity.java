@@ -11,13 +11,16 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.elaine.kebabbangu.R;
+import com.elaine.kebabbangu.base.Expense;
 import com.elaine.kebabbangu.base.Register;
+import com.elaine.kebabbangu.dao.ExpenseDAO;
 import com.elaine.kebabbangu.dao.RegisterDAO;
 
 import java.text.DateFormat;
 import java.text.DecimalFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.LinkedList;
 
 public class RegisterActivity extends AppCompatActivity {
 
@@ -86,9 +89,51 @@ public class RegisterActivity extends AppCompatActivity {
                 })
                 .setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int whichButton) {
-                        RegisterDAO registerDAO = new RegisterDAO(RegisterActivity.this);
-                        registerDAO.deleteAll();
+                       // RegisterDAO registerDAO = new RegisterDAO(RegisterActivity.this);
+                      //  registerDAO.deleteAll();
                     }
                 }).show();
+    }
+
+    public void closeRegister(View view) {
+        RegisterDAO registerDAO = new RegisterDAO(RegisterActivity.this);
+        Register register = registerDAO.getTodaysRegister();
+        String report = "KEBAB BANGU";
+
+        report += "\n\nTotal em dinheiro: R$ " + register.getCash();
+        report += "\nTotal em debito: R$ " + register.getDebit();
+        report += "\nTotal em credito: R$ " + register.getCredit();
+
+        ExpenseDAO expenseDAO = new ExpenseDAO(RegisterActivity.this);
+        LinkedList<Expense> expenses = expenseDAO.readTodaysExpenses();
+
+        if(expenses.size() != 0){
+
+        double expensesTotal = 0;
+
+        for(Expense c : expenses)
+            expensesTotal += c.getValue();
+
+        double total = register.getCash() + register.getCredit() + register.getDebit();
+
+        report += "\n\nTotal de entrada: R$ " + (total + expensesTotal);
+        report += "\nTotal de saida: R$ " + expensesTotal;
+        report += "\nTotal em caixa: R$ " + register.getTotal();
+
+        report += "\n\nDespesas do Dia: ";
+
+        for(Expense c : expenses)
+            report += "\n" + c.getDescription() + " - R$ " + c.getValue();
+
+        } else {
+            double total = register.getCash() + register.getCredit() + register.getDebit();
+
+            report += "\n\nTotal de entrada: " + total;
+
+            report += "\n\nNão houveram despesas!";
+        }
+
+        System.out.println(report);
+        MainActivity.print(report);
     }
 }

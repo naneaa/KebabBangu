@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/fundo"
+    android:orientation="vertical"
+    tools:context="com.elaine.kebabbangu.activities.NewExpenseActivity">
+
+
+    <EditText
+        android:id="@+id/descriptionText"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:layout_marginTop="40dp"
+        android:background="#FFCC00"
+        android:hint="Descrição"
+        android:inputType="textCapWords"
+        android:paddingLeft="10dp"
+        android:textSize="30sp" />
+
+    <EditText
+        android:id="@+id/valueText"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:layout_marginTop="20dp"
+        android:background="#FFCC00"
+        android:hint="Valor"
+        android:inputType="numberDecimal"
+        android:paddingLeft="10dp"
+        android:textSize="30sp" />
+
+     <Button
+        android:id="@+id/button"
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:layout_gravity="center"
+        android:layout_marginTop="100dp"
+        android:background="#FF0000"
+        android:onClick="callCreateExpense"
+        android:text="Adicionar Despesa"
+        android:textColor="#FFFFFF"
+        android:textSize="20sp" />
+
+</LinearLayout>

@@ -65,8 +65,24 @@ public class OrderProductDAO extends SQLiteOpenHelper {
                         "FOREIGN KEY (OrderID) REFERENCES Orders(OrderID)," +
                         "FOREIGN KEY (ProductID) REFERENCES Products(ProductID))";
 
-
         db.execSQL(sqlCreateTableOrderProduct);
+
+        String sqlCreateTableExpenses =
+                "CREATE TABLE Expenses (" +
+                        "ExpenseID INTEGER PRIMARY KEY," +
+                        "ExpenseDescription TEXT NOT NULL," +
+                        "ExpenseDate TEXT NOT NULL," +
+                        "ExpenseValue DOUBLE NOT NULL)";
+
+        db.execSQL(sqlCreateTableExpenses);
+
+        String sqlCreateTableStock =
+                "CREATE TABLE Stock (" +
+                        "ProductID int NOT NULL," +
+                        "ProductQuantity INTEGER NOT NULL," +
+                        "FOREIGN KEY (ProductID) REFERENCES Products(ProductID))";
+
+        db.execSQL(sqlCreateTableStock);
     }
 
     @Override
